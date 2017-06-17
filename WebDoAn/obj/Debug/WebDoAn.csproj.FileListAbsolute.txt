@@ -1,0 +1,171 @@
+C:\Users\vomin\Documents\Visual Studio 2013\Projects\WebDoAn\WebDoAn\bin\WebDoAn.dll.config
+C:\Users\vomin\Documents\Visual Studio 2013\Projects\WebDoAn\WebDoAn\bin\WebDoAn.dll
+C:\Users\vomin\Documents\Visual Studio 2013\Projects\WebDoAn\WebDoAn\bin\WebDoAn.pdb
+C:\Users\vomin\Documents\Visual Studio 2013\Projects\WebDoAn\WebDoAn\bin\Antlr3.Runtime.dll
+C:\Users\vomin\Documents\Visual Studio 2013\Projects\WebDoAn\WebDoAn\bin\EntityFramework.dll
+C:\Users\vomin\Documents\Visual Studio 2013\Projects\WebDoAn\WebDoAn\bin\EntityFramework.SqlServer.dll
+C:\Users\vomin\Documents\Visual Studio 2013\Projects\WebDoAn\WebDoAn\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\vomin\Documents\Visual Studio 2013\Projects\WebDoAn\WebDoAn\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\vomin\Documents\Visual Studio 2013\Projects\WebDoAn\WebDoAn\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\vomin\Documents\Visual Studio 2013\Projects\WebDoAn\WebDoAn\bin\Microsoft.Owin.dll
+C:\Users\vomin\Documents\Visual Studio 2013\Projects\WebDoAn\WebDoAn\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\vomin\Documents\Visual Studio 2013\Projects\WebDoAn\WebDoAn\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\vomin\Documents\Visual Studio 2013\Projects\WebDoAn\WebDoAn\bin\Microsoft.Owin.Security.dll
+C:\Users\vomin\Documents\Visual Studio 2013\Projects\WebDoAn\WebDoAn\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\vomin\Documents\Visual Studio 2013\Projects\WebDoAn\WebDoAn\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\vomin\Documents\Visual Studio 2013\Projects\WebDoAn\WebDoAn\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\vomin\Documents\Visual Studio 2013\Projects\WebDoAn\WebDoAn\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\vomin\Documents\Visual Studio 2013\Projects\WebDoAn\WebDoAn\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\vomin\Documents\Visual Studio 2013\Projects\WebDoAn\WebDoAn\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\vomin\Documents\Visual Studio 2013\Projects\WebDoAn\WebDoAn\bin\Newtonsoft.Json.dll
+C:\Users\vomin\Documents\Visual Studio 2013\Projects\WebDoAn\WebDoAn\bin\Owin.dll
+C:\Users\vomin\Documents\Visual Studio 2013\Projects\WebDoAn\WebDoAn\bin\System.Web.Helpers.dll
+C:\Users\vomin\Documents\Visual Studio 2013\Projects\WebDoAn\WebDoAn\bin\System.Web.Mvc.dll
+C:\Users\vomin\Documents\Visual Studio 2013\Projects\WebDoAn\WebDoAn\bin\System.Web.Optimization.dll
+C:\Users\vomin\Documents\Visual Studio 2013\Projects\WebDoAn\WebDoAn\bin\System.Web.Razor.dll
+C:\Users\vomin\Documents\Visual Studio 2013\Projects\WebDoAn\WebDoAn\bin\System.Web.WebPages.Deployment.dll
+C:\Users\vomin\Documents\Visual Studio 2013\Projects\WebDoAn\WebDoAn\bin\System.Web.WebPages.dll
+C:\Users\vomin\Documents\Visual Studio 2013\Projects\WebDoAn\WebDoAn\bin\System.Web.WebPages.Razor.dll
+C:\Users\vomin\Documents\Visual Studio 2013\Projects\WebDoAn\WebDoAn\bin\WebGrease.dll
+C:\Users\vomin\Documents\Visual Studio 2013\Projects\WebDoAn\WebDoAn\bin\System.Web.Helpers.xml
+C:\Users\vomin\Documents\Visual Studio 2013\Projects\WebDoAn\WebDoAn\bin\System.Web.Mvc.xml
+C:\Users\vomin\Documents\Visual Studio 2013\Projects\WebDoAn\WebDoAn\bin\System.Web.Optimization.xml
+C:\Users\vomin\Documents\Visual Studio 2013\Projects\WebDoAn\WebDoAn\bin\System.Web.Razor.xml
+C:\Users\vomin\Documents\Visual Studio 2013\Projects\WebDoAn\WebDoAn\bin\System.Web.WebPages.xml
+C:\Users\vomin\Documents\Visual Studio 2013\Projects\WebDoAn\WebDoAn\bin\System.Web.WebPages.Deployment.xml
+C:\Users\vomin\Documents\Visual Studio 2013\Projects\WebDoAn\WebDoAn\bin\System.Web.WebPages.Razor.xml
+C:\Users\vomin\Documents\Visual Studio 2013\Projects\WebDoAn\WebDoAn\bin\Newtonsoft.Json.xml
+C:\Users\vomin\Documents\Visual Studio 2013\Projects\WebDoAn\WebDoAn\bin\Antlr3.Runtime.pdb
+C:\Users\vomin\Documents\Visual Studio 2013\Projects\WebDoAn\WebDoAn\bin\EntityFramework.xml
+C:\Users\vomin\Documents\Visual Studio 2013\Projects\WebDoAn\WebDoAn\bin\EntityFramework.SqlServer.xml
+C:\Users\vomin\Documents\Visual Studio 2013\Projects\WebDoAn\WebDoAn\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\vomin\Documents\Visual Studio 2013\Projects\WebDoAn\WebDoAn\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\vomin\Documents\Visual Studio 2013\Projects\WebDoAn\WebDoAn\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\vomin\Documents\Visual Studio 2013\Projects\WebDoAn\WebDoAn\bin\Microsoft.Owin.xml
+C:\Users\vomin\Documents\Visual Studio 2013\Projects\WebDoAn\WebDoAn\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\vomin\Documents\Visual Studio 2013\Projects\WebDoAn\WebDoAn\bin\Microsoft.Owin.Security.xml
+C:\Users\vomin\Documents\Visual Studio 2013\Projects\WebDoAn\WebDoAn\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\vomin\Documents\Visual Studio 2013\Projects\WebDoAn\WebDoAn\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\vomin\Documents\Visual Studio 2013\Projects\WebDoAn\WebDoAn\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\vomin\Documents\Visual Studio 2013\Projects\WebDoAn\WebDoAn\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\vomin\Documents\Visual Studio 2013\Projects\WebDoAn\WebDoAn\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\vomin\Documents\Visual Studio 2013\Projects\WebDoAn\WebDoAn\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\vomin\Documents\Visual Studio 2013\Projects\WebDoAn\WebDoAn\obj\Debug\WebDoAn.dll
+C:\Users\vomin\Documents\Visual Studio 2013\Projects\WebDoAn\WebDoAn\obj\Debug\WebDoAn.pdb
+C:\Users\vomin\documents\visual studio 2013\Projects\WebDoAn\WebDoAn\obj\Debug\WebDoAn.csprojResolveAssemblyReference.cache
+C:\Users\vomin\documents\visual studio 2013\Projects\WebDoAn\WebDoAn\bin\BotDetect.dll
+C:\Users\vomin\documents\visual studio 2013\Projects\WebDoAn\WebDoAn\bin\BotDetect.Web.Mvc.dll
+C:\Users\Quoc Le\Desktop\WebDoAn\WebDoAn\bin\WebDoAn.dll.config
+C:\Users\Quoc Le\Desktop\WebDoAn\WebDoAn\bin\WebDoAn.dll
+C:\Users\Quoc Le\Desktop\WebDoAn\WebDoAn\bin\WebDoAn.pdb
+C:\Users\Quoc Le\Desktop\WebDoAn\WebDoAn\bin\Antlr3.Runtime.dll
+C:\Users\Quoc Le\Desktop\WebDoAn\WebDoAn\bin\BotDetect.dll
+C:\Users\Quoc Le\Desktop\WebDoAn\WebDoAn\bin\BotDetect.Web.Mvc.dll
+C:\Users\Quoc Le\Desktop\WebDoAn\WebDoAn\bin\EntityFramework.dll
+C:\Users\Quoc Le\Desktop\WebDoAn\WebDoAn\bin\EntityFramework.SqlServer.dll
+C:\Users\Quoc Le\Desktop\WebDoAn\WebDoAn\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Quoc Le\Desktop\WebDoAn\WebDoAn\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Quoc Le\Desktop\WebDoAn\WebDoAn\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\Quoc Le\Desktop\WebDoAn\WebDoAn\bin\Microsoft.Owin.dll
+C:\Users\Quoc Le\Desktop\WebDoAn\WebDoAn\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\Quoc Le\Desktop\WebDoAn\WebDoAn\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\Quoc Le\Desktop\WebDoAn\WebDoAn\bin\Microsoft.Owin.Security.dll
+C:\Users\Quoc Le\Desktop\WebDoAn\WebDoAn\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\Quoc Le\Desktop\WebDoAn\WebDoAn\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\Quoc Le\Desktop\WebDoAn\WebDoAn\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\Quoc Le\Desktop\WebDoAn\WebDoAn\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\Quoc Le\Desktop\WebDoAn\WebDoAn\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\Quoc Le\Desktop\WebDoAn\WebDoAn\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Quoc Le\Desktop\WebDoAn\WebDoAn\bin\Newtonsoft.Json.dll
+C:\Users\Quoc Le\Desktop\WebDoAn\WebDoAn\bin\Owin.dll
+C:\Users\Quoc Le\Desktop\WebDoAn\WebDoAn\bin\System.Web.Helpers.dll
+C:\Users\Quoc Le\Desktop\WebDoAn\WebDoAn\bin\System.Web.Mvc.dll
+C:\Users\Quoc Le\Desktop\WebDoAn\WebDoAn\bin\System.Web.Optimization.dll
+C:\Users\Quoc Le\Desktop\WebDoAn\WebDoAn\bin\System.Web.Razor.dll
+C:\Users\Quoc Le\Desktop\WebDoAn\WebDoAn\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Quoc Le\Desktop\WebDoAn\WebDoAn\bin\System.Web.WebPages.dll
+C:\Users\Quoc Le\Desktop\WebDoAn\WebDoAn\bin\System.Web.WebPages.Razor.dll
+C:\Users\Quoc Le\Desktop\WebDoAn\WebDoAn\bin\WebGrease.dll
+C:\Users\Quoc Le\Desktop\WebDoAn\WebDoAn\bin\System.Web.Helpers.xml
+C:\Users\Quoc Le\Desktop\WebDoAn\WebDoAn\bin\System.Web.Mvc.xml
+C:\Users\Quoc Le\Desktop\WebDoAn\WebDoAn\bin\System.Web.Optimization.xml
+C:\Users\Quoc Le\Desktop\WebDoAn\WebDoAn\bin\System.Web.Razor.xml
+C:\Users\Quoc Le\Desktop\WebDoAn\WebDoAn\bin\System.Web.WebPages.xml
+C:\Users\Quoc Le\Desktop\WebDoAn\WebDoAn\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Quoc Le\Desktop\WebDoAn\WebDoAn\bin\System.Web.WebPages.Razor.xml
+C:\Users\Quoc Le\Desktop\WebDoAn\WebDoAn\bin\Newtonsoft.Json.xml
+C:\Users\Quoc Le\Desktop\WebDoAn\WebDoAn\bin\Antlr3.Runtime.pdb
+C:\Users\Quoc Le\Desktop\WebDoAn\WebDoAn\bin\EntityFramework.xml
+C:\Users\Quoc Le\Desktop\WebDoAn\WebDoAn\bin\EntityFramework.SqlServer.xml
+C:\Users\Quoc Le\Desktop\WebDoAn\WebDoAn\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Quoc Le\Desktop\WebDoAn\WebDoAn\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\Quoc Le\Desktop\WebDoAn\WebDoAn\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Quoc Le\Desktop\WebDoAn\WebDoAn\bin\Microsoft.Owin.xml
+C:\Users\Quoc Le\Desktop\WebDoAn\WebDoAn\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\Quoc Le\Desktop\WebDoAn\WebDoAn\bin\Microsoft.Owin.Security.xml
+C:\Users\Quoc Le\Desktop\WebDoAn\WebDoAn\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\Quoc Le\Desktop\WebDoAn\WebDoAn\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\Quoc Le\Desktop\WebDoAn\WebDoAn\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\Quoc Le\Desktop\WebDoAn\WebDoAn\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\Quoc Le\Desktop\WebDoAn\WebDoAn\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\Quoc Le\Desktop\WebDoAn\WebDoAn\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\Quoc Le\Desktop\WebDoAn\WebDoAn\obj\Debug\WebDoAn.csprojResolveAssemblyReference.cache
+C:\Users\Quoc Le\Desktop\WebDoAn\WebDoAn\obj\Debug\WebDoAn.dll
+C:\Users\Quoc Le\Desktop\WebDoAn\WebDoAn\obj\Debug\WebDoAn.pdb
+E:\Do an\WebDoAn\WebDoAn\bin\WebDoAn.dll.config
+E:\Do an\WebDoAn\WebDoAn\bin\WebDoAn.dll
+E:\Do an\WebDoAn\WebDoAn\bin\WebDoAn.pdb
+E:\Do an\WebDoAn\WebDoAn\bin\Antlr3.Runtime.dll
+E:\Do an\WebDoAn\WebDoAn\bin\BotDetect.dll
+E:\Do an\WebDoAn\WebDoAn\bin\BotDetect.Web.Mvc.dll
+E:\Do an\WebDoAn\WebDoAn\bin\EntityFramework.dll
+E:\Do an\WebDoAn\WebDoAn\bin\EntityFramework.SqlServer.dll
+E:\Do an\WebDoAn\WebDoAn\bin\Microsoft.AspNet.Identity.Core.dll
+E:\Do an\WebDoAn\WebDoAn\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\Do an\WebDoAn\WebDoAn\bin\Microsoft.AspNet.Identity.Owin.dll
+E:\Do an\WebDoAn\WebDoAn\bin\Microsoft.Owin.dll
+E:\Do an\WebDoAn\WebDoAn\bin\Microsoft.Owin.Host.SystemWeb.dll
+E:\Do an\WebDoAn\WebDoAn\bin\Microsoft.Owin.Security.Cookies.dll
+E:\Do an\WebDoAn\WebDoAn\bin\Microsoft.Owin.Security.dll
+E:\Do an\WebDoAn\WebDoAn\bin\Microsoft.Owin.Security.Facebook.dll
+E:\Do an\WebDoAn\WebDoAn\bin\Microsoft.Owin.Security.Google.dll
+E:\Do an\WebDoAn\WebDoAn\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+E:\Do an\WebDoAn\WebDoAn\bin\Microsoft.Owin.Security.OAuth.dll
+E:\Do an\WebDoAn\WebDoAn\bin\Microsoft.Owin.Security.Twitter.dll
+E:\Do an\WebDoAn\WebDoAn\bin\Microsoft.Web.Infrastructure.dll
+E:\Do an\WebDoAn\WebDoAn\bin\Newtonsoft.Json.dll
+E:\Do an\WebDoAn\WebDoAn\bin\Owin.dll
+E:\Do an\WebDoAn\WebDoAn\bin\System.Web.Helpers.dll
+E:\Do an\WebDoAn\WebDoAn\bin\System.Web.Mvc.dll
+E:\Do an\WebDoAn\WebDoAn\bin\System.Web.Optimization.dll
+E:\Do an\WebDoAn\WebDoAn\bin\System.Web.Razor.dll
+E:\Do an\WebDoAn\WebDoAn\bin\System.Web.WebPages.Deployment.dll
+E:\Do an\WebDoAn\WebDoAn\bin\System.Web.WebPages.dll
+E:\Do an\WebDoAn\WebDoAn\bin\System.Web.WebPages.Razor.dll
+E:\Do an\WebDoAn\WebDoAn\bin\WebGrease.dll
+E:\Do an\WebDoAn\WebDoAn\bin\System.Web.Helpers.xml
+E:\Do an\WebDoAn\WebDoAn\bin\System.Web.Mvc.xml
+E:\Do an\WebDoAn\WebDoAn\bin\System.Web.Optimization.xml
+E:\Do an\WebDoAn\WebDoAn\bin\System.Web.Razor.xml
+E:\Do an\WebDoAn\WebDoAn\bin\System.Web.WebPages.xml
+E:\Do an\WebDoAn\WebDoAn\bin\System.Web.WebPages.Deployment.xml
+E:\Do an\WebDoAn\WebDoAn\bin\System.Web.WebPages.Razor.xml
+E:\Do an\WebDoAn\WebDoAn\bin\Newtonsoft.Json.xml
+E:\Do an\WebDoAn\WebDoAn\bin\Antlr3.Runtime.pdb
+E:\Do an\WebDoAn\WebDoAn\bin\EntityFramework.xml
+E:\Do an\WebDoAn\WebDoAn\bin\EntityFramework.SqlServer.xml
+E:\Do an\WebDoAn\WebDoAn\bin\Microsoft.AspNet.Identity.Core.xml
+E:\Do an\WebDoAn\WebDoAn\bin\Microsoft.AspNet.Identity.Owin.xml
+E:\Do an\WebDoAn\WebDoAn\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\Do an\WebDoAn\WebDoAn\bin\Microsoft.Owin.xml
+E:\Do an\WebDoAn\WebDoAn\bin\Microsoft.Owin.Host.SystemWeb.xml
+E:\Do an\WebDoAn\WebDoAn\bin\Microsoft.Owin.Security.xml
+E:\Do an\WebDoAn\WebDoAn\bin\Microsoft.Owin.Security.Facebook.xml
+E:\Do an\WebDoAn\WebDoAn\bin\Microsoft.Owin.Security.Cookies.xml
+E:\Do an\WebDoAn\WebDoAn\bin\Microsoft.Owin.Security.OAuth.xml
+E:\Do an\WebDoAn\WebDoAn\bin\Microsoft.Owin.Security.Google.xml
+E:\Do an\WebDoAn\WebDoAn\bin\Microsoft.Owin.Security.Twitter.xml
+E:\Do an\WebDoAn\WebDoAn\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+E:\Do an\WebDoAn\WebDoAn\obj\Debug\WebDoAn.csprojResolveAssemblyReference.cache
+E:\Do an\WebDoAn\WebDoAn\obj\Debug\WebDoAn.dll
+E:\Do an\WebDoAn\WebDoAn\obj\Debug\WebDoAn.pdb

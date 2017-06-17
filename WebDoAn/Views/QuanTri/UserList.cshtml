@@ -1,0 +1,102 @@
+﻿@using WebDoAn.Models
+@using WebDoAn.Helpers
+
+@model List<User>
+
+@section view_title {
+    <h4><b>Danh sách người dùng</b></h4>
+
+}
+
+@section css{
+    <style type="text/css">
+        .tieude {
+            background-color: #3399ff;
+        }
+        .table-hover {
+            background-color: #cce6ff;
+        }      
+    </style>
+}
+
+
+@if (Model == null)
+{
+    <text>Không có nguoi dùng nào</text>
+}
+else
+{
+    <form id="frmRemoveUser" method="post" action="@Url.Action("RemoveUser", "QuanTri")">
+        <input id="txtRUserId" type="hidden" name="userId" />
+    </form>
+
+      <div class="row">
+        <div class="col-md-12">
+            <table class="table table-hover">
+                <thead>
+                    <tr class="tieude">
+                        <th class="col-sm-1">ID</th>
+                        <th class="col-sm-3">Họ tên</th>
+                        <th class="col-sm-2">User name</th>
+                        <th class="col-sm-2">Phân quyền</th>
+                        <th class="col-sm-3">Email</th>
+                        <th class="col-sm-3">Ngày sinh</th>
+                        <th class="col-sm-2">&nbsp;</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var cim in Model)
+                    {
+                        <tr>
+                            <td>
+                                @if(@cim.f_ID == CurrentContext.GetCurUser().f_ID)
+                                {
+                                    <i class="glyphicon glyphicon-user"></i>
+                                }
+                                <b>@cim.f_ID</b>
+                            </td>
+
+                            <td>@cim.f_Name</td>
+
+                            <td>@cim.f_Username</td>
+
+                            <td>
+                                @if (cim.f_Permission == 1)
+                                {
+                                    <p><b>Admin</b></p>
+                                }
+                                else
+                                {
+                                    <p>User</p>
+                                }
+                            </td>
+
+                            <td>@cim.f_Email</td>
+
+                            <td>@cim.f_DOB</td>
+
+                            <td class="text-right">
+                                <a class="btn btn-danger btn-xs removeUser" href="javascript:;" role="button" data-toggle="tooltip" title="Xóa" data-proid="@cim.f_ID">
+                                    <i class="fa fa-remove"></i>
+                                </a>
+
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+
+
+            </table>
+        </div>
+    </div>
+}
+
+@section js{
+<script type="text/javascript">
+    $('.removeUser').on('click', function () {
+        var id = $(this).data('proid');
+        $('#txtRUserId').val(id);
+        $('#frmRemoveUser').submit();
+    });
+</script>
+}

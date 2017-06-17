@@ -1,0 +1,81 @@
+﻿@using WebDoAn.Helpers
+
+@model List<LikeItem>
+
+@section view_title {
+    <h4><b>Đã thích</b></h4>
+}
+
+@section css{
+    <style type="text/css">
+        .tieude {
+            background-color: #ff8080;
+        }
+
+        .table-hover {
+            background-color: #ffcccc;
+        }
+    </style>
+}
+
+@section js{
+<script type="text/javascript">
+    $('.removeItem').on('click', function () {
+        var id = $(this).data('proid');
+        $('#txtRProId').val(id);
+        $('#frmR').submit();
+    });
+    
+</script>
+
+}
+
+
+@if (Model.Count == 0)
+{
+    <h4>Không có sản phẩm</h4>
+}
+else {
+    <form id="frmR" method="post" action="@Url.Action("RemoveLike", "Like")">
+        <input id="txtRProId" type="hidden" name="proId" />
+    </form>
+    
+    <table class="table table-hover">
+        <thead>
+            <tr class="tieude">
+                <th class="col-sm-2">Sản phẩm</th>
+                <th class="col-sm-2">Giá khởi điểm (VND)</th>
+                <th class="col-sm-3">Điểm nổi bật</th>
+                <th class="col-sm-2">&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+           @foreach (var cim in Model)
+           {
+              if (cim.idUser == CurrentContext.GetCurUser().f_ID)
+              {
+                  <tr>
+                      <td>
+                          <a href="@Url.Action("Detail", "Product", new { id = cim.Product.ProID })">
+                             <b>@cim.Product.ProName</b>
+                         </a>
+                      </td>
+                      <td>
+                          @cim.Product.Price 
+                      </td>
+                      <td>
+                          @cim.Product.TinyDes
+                      </td>
+
+                      <td class="text-right">
+                         <a class="btn btn-danger btn-xs removeItem" href="javascript:;" role="button" data-toggle="tooltip" title="Xóa" data-proid="@cim.Product.ProID">
+                              <i class="fa fa-remove"></i>
+                         </a>
+                      </td>
+                  </tr>
+              }
+           }
+
+        </tbody>
+    </table>
+}

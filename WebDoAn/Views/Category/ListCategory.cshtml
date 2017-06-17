@@ -1,0 +1,91 @@
+﻿@using WebDoAn.Models
+@using WebDoAn.Helpers
+
+@model List<WebDoAn.Models.Category>
+
+@section view_title {
+    <h4><b>Danh mục sản phẩm đấu giá</b></h4>
+}
+
+@section css{  
+    <style type="text/css">
+        .tieude {
+            background-color: #00cc44;
+        }
+
+        .table-hover {
+            background-color: #b3c6ff;
+        }
+    </style>
+}
+
+@if (Model == null)
+{
+    <text>Không có sản phẩm nào</text>
+}
+else
+{
+     <form id="frmRemoveCat" method="post" action="@Url.Action("DeleteCat", "Category")">
+        <input id="txtRCatId" type="hidden" name="catId"/>
+    </form>
+    
+     <td>
+         <a class="btn btn-success" href="@Url.Action("Add", "Category")" role="button" data-toggle="tooltip">
+             <i class="glyphicon glyphicon-plus"></i>
+             Thêm mới
+         </a>    
+     </td>
+     <br /><br />
+    <table class="table table-hover">
+        <thead>
+            <tr class="tieude">
+                <th class="col-sm-1">ID</th>
+                <th class="col-sm-3">Tên danh mục</th>
+                <th class="col-sm-3">Số lượng sản phẩm</th>
+                <th class="col-sm-1">&nbsp;</th>
+                <th class="col-sm-1">&nbsp;</th>
+                <th class="col-sm-1">&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+           @foreach (var c in Model)
+           {             
+                  <tr>
+                      <td>@c.CatID</td>
+                      <td>@c.CatName</td>
+                      <td>@CurrentContext.GetCategory().soLuongSP(c.CatID)</td>
+
+                      <td>
+                          <a class="btn btn-success btn-xs" href="@Url.Action("ByCat", "Product", new { id = c.CatID })" role="button" data-toggle="tooltip">Chi tiết</a>
+                      </td>
+
+                      <td class="text-right">
+                          <a class="btn btn-danger btn-xs" href="javascript:;" role="button" data-toggle="tooltip" title="Sửa đổi">
+                              <i class="glyphicon glyphicon-pencil"></i>
+                          </a>                         
+                      </td>
+
+                      <td class="text-right">
+                          <a class="btn btn-danger btn-xs" href="javascript:;" role="button" data-toggle="tooltip" title="Xóa" data-catid="@c.CatID">
+                              <i class="glyphicon glyphicon-trash"></i>
+                          </a>
+                      </td>
+                  </tr>
+              }
+           
+
+        </tbody>
+    </table>
+}
+
+@section js{
+    <script type="text/javascript">
+        $('.removeItemCat').on('click', function () {
+            var catId = $(this).data('catid');
+            $('#txtRCatId').val(catId);
+
+            $('#frmRemoveCat').submit();
+        });
+
+    </script>
+}

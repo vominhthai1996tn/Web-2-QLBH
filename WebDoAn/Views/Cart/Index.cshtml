@@ -1,0 +1,202 @@
+﻿@using WebDoAn.Helpers
+
+@model List<CartItem>
+
+@section view_title {
+    <h4><b>Sản phẩm bạn đấu giá</b></h4>
+   
+}
+
+@section css{
+    
+    <link href="~/assets/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.css" rel="stylesheet" />
+<style type="text/css">
+    .proPricolor {
+        color: blue;
+    }
+
+    .tieude {
+        background-color: #3399ff;
+       
+    }
+
+    .table-hover {
+        background-color: #e6e6e6;
+    }
+   
+</style>
+
+    }
+
+@section js{
+    
+    <script src="~/assets/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js"></script>
+    <script type="text/javascript">
+     $('.numeric').TouchSpin({
+            min: 1,
+            max: 50,
+            verticalbuttons: true
+     });
+         $('.removeItem').on('click', function (){
+             var id = $(this).data('proid');
+             $('#txtRProId').val(id);
+             $('#frmR').submit();
+
+         });
+         $('.updateItem').on('click', function () {
+             var id = $(this).data('proid');
+             $('#txtUProId').val(id);
+
+             var q = $(this).closest('tr').find('.numeric').val();
+             $('#txtUQ').val(q);
+
+             $('#frmU').submit();
+
+         });
+
+         $(document).ready(function () {
+             $('[data-toggle="tooltip"]').tooltip();
+         });
+         
+     </script>
+   
+    }
+
+@if (Model.Count == 0)
+{  
+    <h4>Không có sản phẩm</h4>
+}
+else
+{
+    <form id="frmR" method="post" action="@Url.Action("Remove", "Cart")">
+        <input id="txtRProId" type="hidden" name="proId" />
+    </form>
+     @*<form id="frmU" method="post" action="@Url.Action("Update", "Cart")">
+        <input id="txtUProId" type="hidden" name="proId" />
+         <input id="txtUQ" type="hidden" name="quantity" />
+    </form>*@
+    
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-hover">
+                <thead>
+                    <tr class="tieude">
+                        <th class="col-sm-3">Sản phẩm</th>
+                        <th class="col-sm-2">Giá khởi điểm (VND)</th>
+                        <th class="col-sm-3">Thời gian đến</th>
+                        <th class="col-sm-2">Giá đấu (VND)</th>   
+                                              
+                        @*<th class="col-sm-2">Số lượng</th>*@
+                        <th class="col-sm-2">&nbsp;</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        decimal total = 0;
+                        decimal taikhoan = 0;
+                    }
+                    @foreach (var cim in Model)
+                    {
+                        if (cim.idUser == CurrentContext.GetCurUser().f_ID)
+                        {
+
+                            //total += cim.Product.Price * cim.Quantity;
+                            total += cim.Price * cim.Quantity;
+
+                            <tr>
+                                @*<td>@cim.Product.ProName</td>*@
+
+                                <td>
+                                    <a href="@Url.Action("Detail", "Product", new { id = cim.Product.ProID })">
+                                        <b>@cim.Product.ProName</b>
+                                    </a>
+                                </td>
+
+                                <td>@string.Format("{0:N0}", cim.Product.Price)</td>
+
+                                <td>@cim.Product.DateTime</td>
+
+                                @*<td>@string.Format("{0:N0}", cim.Product.Price)</td>*@
+                                <td class="proPricolor">@string.Format("{0:N0}", cim.Price)</td>
+
+
+
+                                @*<td>@cim.Quantity</td>*@
+                                @*<td>
+                            <input type="text" value="@cim.Quantity" class="numeric"/>
+                        </td>*@
+
+                                @*<td>@string.Format("{0:N0}", cim.Product.Price * cim.Quantity)</td>*@
+                                @*<td>@string.Format("{0:N0}", cim.Price * cim.Quantity)</td>*@
+
+                                <td class="text-right">
+                                    @*Báo cho người dùng biết cho ngươi ra giá cao hơn*@
+                                    @if (CurrentContext.GetCart().IsPriceUser(cim.idUser, cim.Product.ProID, Convert.ToInt32(cim.Price)) == false)
+                                    {
+                                        <a href="javascript:;" role="button" data-toggle="tooltip" title="Đã có người ra giá cao hơn bạn" data-proid="@cim.Product.ProID">
+                                            <i class="glyphicon glyphicon-exclamation-sign"></i>
+                                        </a>
+                                    }
+                                    
+                                    @*nếu sản phẩm được đấu giá thành công sẽ hiện lên nút thanh toán cho từng sản phẩm, hoặc là huỷ bỏ *@
+                                    @*@if (CurrentContext.GetCart().PriceMax(cim.idUser, cim.Product.ProID) == true)
+                                    {
+                                        <form method="post" id="frmWin" action="@Url.Action("Win", "Cart" ,new { id = cim.Product.ProID })">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <button type="submit" class="btn btn-danger">
+                                                        <i class="fa fa-check"></i> Thanh toán
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    }*@
+
+                                    <a class="btn btn-danger btn-xs removeItem" href="javascript:;" role="button" data-toggle="tooltip" title="Xóa" data-proid="@cim.Product.ProID">
+                                        <i class="fa fa-remove"></i>
+                                    </a>
+
+                                </td>
+                            </tr>
+                                    taikhoan = cim.moneyUser;
+                        }
+                    }
+                </tbody>
+
+                <tfoot>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td><h4><b>Tổng tiền:</b></h4></td>
+                        <td class="text-danger" colspan="2">
+                            <h4>
+                                @string.Format("{0:N0}", total)
+                            </h4>
+                        </td>
+                    </tr>
+                </tfoot>
+
+            </table>
+        </div>
+    </div>
+    
+    <h4>Tài khoản hiện tại: @string.Format("{0:N0}", taikhoan) (VND)</h4>
+    <h4>Khoản chi: @string.Format("{0:N0}", total) (VND)</h4>
+     <h4><b>__________________________________</b></h4>
+    <h4><b>Còn lại: @string.Format("{0:N0}", taikhoan - total) (VND)</b></h4>
+    <br />
+    
+    <form method="post" id="frmCheckout" action="@Url.Action("Checkout", "Cart")">
+        <div class="row">
+            <div class="col-md-12">
+                <a class="btn btn-success" href="@Url.Action("Index", "Home")" role="button">
+                    <i class="fa fa-mail-reply"></i> Tiếp tục mua hàng
+                </a>
+                <button type="submit" class="btn btn-danger">
+                    <i class="fa fa-check"></i> Thanh toán
+                </button>
+            </div>
+        </div>
+    </form>
+}
+

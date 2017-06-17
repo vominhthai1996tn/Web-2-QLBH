@@ -1,0 +1,371 @@
+﻿@using WebDoAn.Models
+@using WebDoAn.Helpers
+
+
+@section view_title {
+    <h4><b>Thông tin</b></h4>
+}
+
+@model User
+@section css{
+    <link href="~/assets/bootstrap-datepicker-master/css/bootstrap-datepicker3.min.css" rel="stylesheet" />
+
+    <style type="text/css">
+
+        .textcolor {
+            color: blue;
+        }
+        .b{
+            color: red;
+        }
+        .pwold {
+            margin-left:35px;
+        }
+        .pw {
+            margin-left: 60px;
+        }
+        
+    </style>
+}
+
+@section js{
+    <script src="~/assets/jquery-validation/jquery.validate.min.js"></script>
+    <script src="~/assets/bootstrap-datepicker-master/js/bootstrap-datepicker.min.js"></script> 
+    <script src="~/assets/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js"></script>
+
+    <script type="text/javascript">   
+        $('.editNameItem').on('click', function () {
+            var idUser = $(this).data('id');
+            $('#txtidUser').val(idUser)
+            $('#frmEditNameItem').submit();
+        });
+
+        $('#frmEditNameItem').validate({
+            rules: {
+                nameUser: {
+                    required: true
+                },               
+            },
+            messages: {
+                nameUser: {
+                    required: 'Vui lòng nhập tên.'
+                },              
+            }
+        });
+
+        $('.editPasswordItem').on('click', function () {
+            var idpwUser = $(this).data('id');
+            $('#txtpwUser').val(idpwUser)
+            $('#frmEditPasswordItem').submit();
+        });
+
+        $('#frmEditPasswordItem').validate({
+            rules: {
+                pwUser: {
+                    required: true,
+                    minlength: 6
+                },
+                pwnewUser: {
+                    equalTo: '#txtPWD'
+                },
+                pwoldUser: {
+                    required: true,
+                    equalTo: '@Model.f_Password',
+                    minlength: 6
+                },
+
+            },
+            messages: {
+                pwUser: {
+                    required: 'Vui lòng nhập mật khẩu.',
+                    minlength: 'Mật khẩu phải dài ít nhất 6 ký tự'
+                },
+                pwnewUser: {
+                    equalTo: 'Mật khẩu nhập lại chưa khớp'
+                },
+                pwoldUser: {
+                    required: 'Vui lòng nhập mật khẩu cũ.',
+                    equalTo: 'Mật khẩu cũ chưa khớp',
+                    minlength: 'Mật khẩu phải dài ít nhất 6 ký tự'
+                },
+            }
+        });
+
+        $('#frmNewPasswordItem').validate({
+            rules: {               
+                pwnewUser: {
+                    equalTo: '#txtpwUser'
+                },               
+            },
+            messages: {                
+                pwnewUser: {
+                    equalTo: 'Mật khẩu nhập lại chưa khớp'
+                },               
+            }
+        });
+
+        $('#frmOldPasswordItem').validate({
+            rules: {               
+                pwoldUser: {
+                    required: true,
+                    equalTo: '#txtoldPW',
+                    minlength: 6
+                },
+
+            },
+            messages: {                
+                pwoldUser: {
+                    required: 'Vui lòng nhập mật khẩu cũ.',
+                    equalTo: 'Mật khẩu cũ chưa khớp',
+                    minlength: 'Mật khẩu phải dài ít nhất 6 ký tự'
+                },
+            }
+        });
+
+        $('.editEmailItem').on('click', function () {
+            var idemailUser = $(this).data('id');
+            $('#txtemailUser').val(idemailUser)
+            $('#frmEditEmailItem').submit();
+        });
+
+        $('#frmEditEmailItem').validate({
+            rules: {
+                emailUser: {
+                    required: true,
+                    email: true
+                },
+            },
+            messages: {
+                emailUser: {
+                    required: 'Vui lòng nhập email.',
+                    email: 'Email không đúng định dạng'
+                },
+            }
+        });
+
+</script>
+
+}
+
+
+@if (Model == null)
+{
+   <text>Chưa cập nhật thông tin. Xin chờ thêm thời gian</text>
+}
+else
+{       
+    <div class="row-fluid">
+        <div class="col-md-12">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th class="col-sm-3"></th>
+                        <th class="col-sm-8"></th>
+                        <th class="col-sm-3"></th>
+                        <th class="col-sm-4">&nbsp;</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        @*đổi tên*@
+                        <td>
+                            <div class="col-md-12 caption-lg-orange">
+                                <h5><b>Họ tên</b></h5>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-md-12 caption-lg-orange">
+                                <h5>@Model.f_Name</h5>
+                            </div>
+                            <div>                              
+                                <div id="demo1" class="collapse">
+                                    <form class="navbar-form navbar-left" id="frmEditNameItem" method="post" action="@Url.Action("EditName", "Account", new {id = @Model.f_ID })">
+                                        <div class="form-group">
+                                            <input id="txtnameUser" type="text" class="form-control" placeholder="@Model.f_Name" name="nameUser">
+                                        </div>
+                                        <input type="hidden" id="txtidUser" name="idUser" />
+                                        @*<input type="hidden" id="txtidUser" name="idUser" value="@Model.f_ID">*@
+                                    </form>
+                                  
+                                    <a href="javascript:;" class="btn btn-small editNameItem" role="button">
+                                        <i class="glyphicon glyphicon-ok"></i>
+                                        Ok
+                                    </a>
+                                    <a href="#" class="btn" data-toggle="collapse" data-target="#demo1">
+                                        <i class="glyphicon glyphicon-remove"></i>
+                                        Huỷ
+                                    </a>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <a href="#" class="btn" data-toggle="collapse" data-target="#demo1">
+                                <i class="glyphicon glyphicon-pencil"></i>
+                                Sửa đổi
+                            </a>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <div class="col-md-12 caption-lg-orange">
+                                <h5><b>User name</b></h5>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-md-12 caption-lg-orange">
+                                <h5>@Model.f_Username</h5>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    @*Đổi mật khẩu*@
+                    <tr>
+                        <td>
+                            <div class="col-md-12 caption-lg-orange">
+                                <h5><b>Password</b></h5>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-md-12 caption-lg-orange" >
+                                <h5>@Model.f_Password</h5>
+                            </div>
+                            <div>
+                                <div id="demo2" class="collapse">
+                                    <form class="navbar-form navbar-left" id="frmEditPasswordItem" method="post" action="@Url.Action("EditPassword", "Account", new { id = @Model.f_ID })">
+                                        <div class="form-group">
+                                            <label>Mật khẩu mới </label>
+                                            <input id="txtpwUser" type="password" class="form-control pw" name="pwUser">
+                                        </div>                                        
+                                        <input type="hidden" id="txtidpwUser" name="idpwUser" />
+                                    </form>
+                                    <a href="#" class="btn btn-small" role="button">
+                                        <i class="glyphicon glyphicon-ok"></i>
+                                        Ok
+                                    </a>
+                                    <a href="#" class="btn" data-toggle="collapse" data-target="#demo2">
+                                        <i class="glyphicon glyphicon-remove"></i>
+                                        Huỷ
+                                    </a>
+                                    <form class="navbar-form navbar-left" id="frmNewPasswordItem">
+                                        <div class="form-group">
+                                            <label>Nhập lại mật khẩu mới </label>
+                                            <input id="txtpwnewUser" type="password" class="form-control" name="pwnewUser">
+                                        </div>
+                                    </form>
+                                    <form class="navbar-form navbar-left" id="frmOldPasswordItem">
+                                        <div class="form-group">
+                                            <input id="txtoldPW" type="hidden" class="form-control" name="oldPW" value="@Model.f_Password">
+                                            <label>Mật khẩu hiện tại </label>
+                                            <input id="txtpwoldUser" type="password" class="form-control pwold" name="pwoldUser">
+                                                                                   
+                                        </div>
+                                    </form>
+                                </div>
+                                
+                            </div>                          
+                        </td>
+                        <td>
+                            <a href="#" class="btn" data-toggle="collapse" data-target="#demo2">
+                                <i class="glyphicon glyphicon-pencil"></i>
+                                Sửa đổi
+                            </a>
+                        </td>
+                    </tr>
+                   
+                    @*Đổi email*@
+                    <tr>
+                        <td>
+                            <div class="col-md-12 caption-lg-orange">
+                                <h5><b>Email</b></h5>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-md-12 caption-lg-orange">
+                                <h5>@Model.f_Email</h5>
+                            </div>
+                            <div>
+                                <div id="demo3" class="collapse">
+                                    <form class="navbar-form navbar-left" id="frmEditEmailItem" method="post" action="@Url.Action("EditEmail", "Account", new { id = @Model.f_ID })">
+                                        <div class="form-group">
+                                            @*<input id="txtnameUser" type="text" class="form-control" placeholder="@Model.f_Name" name="nameUser">*@
+                                            <input id="txtemailUser" type="text" class="form-control" placeholder="@Model.f_Email" name="emailUser">
+                                        </div>
+                                        <input type="hidden" id="txtidemailUser" name="idemailUser" />
+                                    </form>
+                                    <a href="#" class="btn btn-small editEmailItem" role="button">
+                                        <i class="glyphicon glyphicon-ok"></i>
+                                        Ok
+                                    </a>
+                                    <a href="#" class="btn" data-toggle="collapse" data-target="#demo3">
+                                        <i class="glyphicon glyphicon-remove"></i>
+                                        Huỷ
+                                    </a>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <a href="#" class="btn" data-toggle="collapse" data-target="#demo3">
+                                <i class="glyphicon glyphicon-pencil"></i>
+                                Sửa đổi
+                            </a>
+                        </td>
+                    </tr>
+                   
+                    @*Ngày sinh*@
+                    <tr>
+                        <td>
+                            <div class="col-md-12 caption-lg-orange">
+                                <h5><b>Ngày sinh</b></h5>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-md-12 caption-lg-orange">
+                                <h5>@Model.f_DOB</h5>
+                            </div>
+                            @*<div>
+                                <div id="demo4" class="collapse">
+                                    <form class="navbar-form navbar-left">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control">
+                                        </div>
+                                    </form>
+                                    <a href="#" class="btn btn-small" role="button">
+                                        <i class="glyphicon glyphicon-ok"></i>
+                                        Ok
+                                    </a>
+                                    <a href="#" class="btn" data-toggle="collapse" data-target="#demo4">
+                                        <i class="glyphicon glyphicon-remove"></i>
+                                        Huỷ
+                                    </a>
+                                </div>
+                            </div>*@
+                        </td>
+                        @*<td>
+                            <a href="#" class="btn" data-toggle="collapse" data-target="#demo4">
+                                <i class="glyphicon glyphicon-pencil"></i>
+                                Sửa đổi
+                            </a>
+                        </td>*@
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <div class="col-md-12 caption-lg-orange">
+                                <h5><b>Số dư tài khoản</b></h5>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-md-12 caption-lg-orange">
+                                <h5>@string.Format("{0:N0}", Model.f_Money) VND</h5>
+                            </div>
+                        </td>
+                    </tr>
+                   
+                </tbody>
+              
+            </table>
+        </div>
+    </div>
+}

@@ -1,0 +1,164 @@
+﻿@using WebDoAn.Models
+@using WebDoAn.Helpers;
+
+@model List<Product>
+
+@section view_title {
+    <h4><b>Trang chủ</b></h4>
+}
+
+@section css{
+    <style type="text/css">
+        .paddinglike, .paddinglike:visited {
+            color: #0066ff;
+            font-size: medium;
+            margin-left: 65px;
+        }
+        .paddinglike:hover, .paddinglike:active {
+            color: red;
+        }
+        .caption-lg-orange {
+            font-weight: bold;
+            font-size: 12pt;
+            color: #fc6e04;
+        }
+        .datecolor {
+            color: blue;
+        }
+        .caption-lg-red {
+            font-weight: bold;
+            font-size: 11pt;
+            color: #ff0000;
+        }
+        .top {
+            height: 850px;
+            overflow: hidden;
+            background-color: #ff9999;
+        }
+        .divimg {           
+            width: 270px;
+            height: 160px;
+            overflow: hidden;
+            padding-left: 30px;
+        }
+        .divnoidung {           
+            width: 260px;
+            height: 160px;
+            overflow: hidden;
+        }
+        .thumbnailtop {
+            height: 380px;
+            overflow: hidden;
+        }
+        
+    </style>
+}
+
+@if (Model == null)
+{ 
+    <p>Không có sản phẩm</p>
+}
+else
+{
+    <div class="panel-heading top">
+        <h4><b>Top 5 sản phẩm giá cáo nhấp</b></h4>
+        @{
+            int dem = 0;
+        }
+        @foreach (var c in Model)
+        {
+            if (dem == 5)
+            {
+                break;
+            }
+                
+            <div class="col-md-4">
+                <div class="thumbnail thumbnailtop">
+                    <div class="divimg">
+                        <img src="~/Imgs/sp/@c.ProID/main_thumbs.jpg" title="@c.ProName" data-toggle="tooltip" />
+                    </div>
+                    <div class="caption">
+                        <div class="divnoidung">
+                            <h4 class="caption-lg-orange">@c.ProName</h4>
+                            <h4 class="caption-lg-red">Giá khởi điểm: @String.Format("{0:N0}", c.Price) VND</h4>
+                            <h4 class="datecolor">Thời gian đấu giá đến: @c.DateTime</h4>
+                            <p>@c.TinyDes</p>
+                        </div>
+                        <p>
+                            <a href="@Url.Action("Detail", "Product", new { id = @c.ProID })" class="btn btn-primary" role="button">
+                                Chi tiết
+                            </a>
+                            @if (CurrentContext.IsLogged())
+                            {
+                                <a href="javascript:;" class="btn btn-success addItem" role="button" data-id="@c.ProID" data-toggle="modal" data-target="#myModal" title="Giá +100,000">
+                                    <i class="fa fa-cart-plus"></i>
+                                    Đấu giá
+                                </a>
+
+                                <a href="javascript:;" class="likeItem" data-id="@c.ProID" title="Like"><i class="glyphicon glyphicon-heart paddinglike"></i></a>
+                            }
+                    </div>
+                </div>
+            </div>
+
+           dem = dem + 1;
+        }
+    </div>
+    
+    <br />
+    <div class="panel-heading top">
+        <h4><b>Top 5 sản phẩm gần kết thúc đấu giá</b></h4>
+        @{
+            int dem1 = 0;
+        }
+        @foreach (var d in ViewBag.ListDeline)
+        {
+            if (dem1 == 5)
+            {
+                break;
+            }
+            
+            <div class="col-md-4">
+                <div class="thumbnail thumbnailtop">
+                    <div class="divimg">
+                        <img src="~/Imgs/sp/@d.ProID/main_thumbs.jpg" title="@d.ProName" data-toggle="tooltip" />
+                    </div>
+                    <div class="caption">
+                        <div class="divnoidung">
+                            <h4 class="caption-lg-orange">@d.ProName</h4>
+                            <h4 class="caption-lg-red">Giá khởi điểm: @String.Format("{0:N0}", d.Price) VND</h4>
+                            <h4 class="datecolor">Thời gian đấu giá đến: @d.DateTime</h4>
+                            <p>@d.TinyDes</p>
+                        </div>
+                        <p>
+                            <a href="@Url.Action("Detail", "Product", new { id = @d.ProID })" class="btn btn-primary" role="button">
+                                Chi tiết
+                            </a>
+                            @if (CurrentContext.IsLogged())
+                            {
+                                <a href="javascript:;" class="btn btn-success addItem" role="button" data-id="@d.ProID" data-toggle="modal" data-target="#myModal" title="Giá +100,000">
+                                    <i class="fa fa-cart-plus"></i>
+                                    Đấu giá
+                                </a>
+
+                                <a href="javascript:;" class="likeItem" data-id="@d.ProID" title="Like"><i class="glyphicon glyphicon-heart paddinglike"></i></a>
+                            }
+                    </div>
+                </div>
+            </div>
+            
+            dem1 = dem1 + 1;
+        }
+    </div>
+    
+     <br />
+    <div class="panel-heading top">
+        <h4><b>Top 5 sản phẩm nhiều lượt ra giá nhất</b></h4>
+    </div>
+}
+
+@section js{
+   <script type="text/javascript">
+
+   </script>
+}

@@ -1,0 +1,64 @@
+﻿@using WebDoAn.Models
+@using WebDoAn.Helpers
+
+@model List<Product>
+
+@section view_title {
+    <h4><b>Danh sách sản phẩm còn thời hạn đấu giá</b></h4>
+}
+
+@section css{
+    <link href="~/assets/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.css" rel="stylesheet" />
+    <style type="text/css">
+
+    </style>
+}
+
+@if (Model == null)
+{
+    <text>Không có sản phẩm nào</text>
+}
+else
+{
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-hover">
+                <thead>
+                    <tr class="tieude">
+                        <th class="col-sm-3">Sản phẩm</th>
+                        <th class="col-sm-2">Giá khởi điểm (VND)</th>
+                        <th class="col-sm-3">Thời gian đến</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var cim in Model)
+                    {
+                        if (cim.IDSell == CurrentContext.GetCurUser().f_ID)
+                        {
+                            <tr>
+                                <td>
+                                    <a href="@Url.Action("Detail", "Product", new { id = cim.ProID })">
+                                        <b>@cim.ProName</b>
+                                    </a>
+                                </td>
+
+                                <td>@string.Format("{0:N0}", cim.Price)</td>
+
+                                <td>@cim.DateTime</td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+}
+
+@section js{
+    <script src="~/assets/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js"></script>
+    <script type="text/javascript">
+
+
+    </script>
+}
