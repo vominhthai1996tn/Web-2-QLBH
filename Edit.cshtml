@@ -1,0 +1,29 @@
+﻿
+@{
+    Layout = null;
+}
+
+@model WebDoAn.Models.Category
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+</head>
+<body>
+    <form method="post" action="@Url.Action("Update", "Category")">
+        ID: <input type="text" name="CatID" readonly value="@Model.CatID"/>
+        <br />
+        Danh mục:
+        <input type="text" name="CatName" value="@Model.CatName"/>
+        <button type="submit">
+            Đồng ý
+        </button>
+    </form>
+    <a href="@Url.Action("Index", "Category")">
+        Quay về
+    </a>
+</body>
+</html>

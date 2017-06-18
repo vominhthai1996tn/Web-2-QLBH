@@ -1,0 +1,89 @@
+﻿@using WebDoAn.Models
+@using WebDoAn.Helpers
+
+@model Product
+
+@section view_title {
+    Chi tiết sản phẩm
+}
+
+@section css{
+
+    <link href="~/assets/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.css" rel="stylesheet" />
+
+    <style type="text/css">
+        .caption-lg-orange{
+            font-weight: bold;
+            font-size: 12pt;
+            color: #fc6e04;
+        }
+
+        .caption-lg-red {
+            font-weight: bold;
+            font-size: 11pt;
+            color: #ff0000;
+        }
+        .padding {
+            padding-top: 8px;
+        }
+    </style>
+
+    }
+@section js {
+    
+    
+    <script src="~/assets/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js"></script>
+    <script type="text/javascript">
+        $('#txtQ').TouchSpin({
+            min: 1,
+            max: 50,
+            verticalbuttons: true
+        });
+    </script>
+    
+    }
+
+@if (Model == null)
+{
+    <text>Sản phẩm không tồn tại!</text>
+} else {
+    
+    <div class="row">
+        <div class="col-md-10">
+            <img src="~/Imgs/sp/@Model.ProID/main_thumbs.jpg" />
+        </div>
+        <div class="col-md-10 caption-lg-orange">
+            <h3>@Model.ProName</h3>
+        </div>
+        <div class="col-md-10 padding">
+            <span class="caption-lg-red">Giá bán: @string.Format("{0:N0}",Model.Price)</span>
+        </div>
+        <div class="col-md-10 padding">
+            Tồn kho: @Model.Quantity
+        </div>
+            
+            <div class="col-md-12 padding">
+                @Html.Raw(HttpUtility.HtmlDecode(Model.FullDes))
+            </div>
+        </div>
+    
+    if (CurrentContext.IsLogged()) { 
+    
+    <form class="form-horizontal" id="frmAddItem" method="post" action="@Url.Action("Add", "Cart")">
+        <div class="form-group">
+            <div class="col-sm-4">
+                <input type="hidden" id="txtP" name="proId" value="@Model.ProID"/>
+                <div class="input-group" style="margin-left: 24px;">
+                    <input id="txtQ" type="text" name="quantity" class="form-control" placeholder="Slg" value="1">
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary" type="submit">
+                            <i class="fa fa-cart-plus"></i> 
+                        </button> 
+                    </span>
+                </div>
+            </div>
+        </div>
+    </form>
+    }
+    
+}

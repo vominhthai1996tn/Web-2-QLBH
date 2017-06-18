@@ -1,0 +1,104 @@
+﻿@using WebDoAn.Models
+@using WebDoAn.Helpers
+@model List<Product>
+
+@section view_title {
+    Danh sách sản phẩm
+}
+
+@section js{
+    <script type="text/javascript">
+        $('.addItem').on('click', function () {
+            var proId = $(this).data('id');
+            $('#txtP').val(proId)
+            $('#frmAddToCart').submit();
+        });
+    </script>
+
+    }
+
+
+@if (Model.Count == 0)
+{
+    <text>Không có sản phẩm</text>
+}
+else
+{
+    @*
+    @foreach (var p in Model)
+    {
+        @p.ProName
+        <br />
+    }
+        *@
+    <form id="frmAddToCart" method="post" action="@Url.Action("Add2", "Cart") ">
+        <input type="hidden" id="txtP" name="proId" />
+        <input type="hidden" id="txtQ" name="quantity" value="1"/>
+        <input type="hidden" id="txtCP" name="curPage" value="@ViewBag.CurPage" />
+    </form>
+    
+    
+    <div class="row">
+        @foreach (var p in Model)
+        {
+            
+        <div class="col-md-6">
+            <div class="thumbnail">
+                <img src="~/Imgs/sp/@p.ProID/main_thumbs.jpg" title="@p.ProName" />
+                <div class="caption">
+                    <h4>@p.ProName</h4>
+                    <h4>Giá: @String.Format("{0:N0}", p.Price)</h4>
+                    <h4>Tồn: @p.Quantity</h4>
+                    <p>@p.TinyDes</p>
+                    <p>
+                        <a href="@Url.Action("Detail", "Product", new { id = @p.ProID })" class="btn btn-primary" role="button">
+                            Chi tiết
+                        </a> 
+                        @if (CurrentContext.IsLogged()) { 
+                        <a href="javascript:;" class="btn btn-success addItem" role="button" data-id="@p.ProID">
+                            <i class="fa fa-cart-plus"></i>
+                            Mua
+                        </a>
+                        }
+                    </p>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+        <nav aria-label="Page navigation">
+       <ul class="pagination">
+     <li>
+        <a href="?page=@(ViewBag.CurPage - 1)" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+         </a>
+     </li>
+
+           @for (int i = 1; i <= ViewBag.Pages; i++)
+           {
+               if (ViewBag.CurPage == i)
+               {
+                   <li class="active">
+                   <a href="?page=@i">@i</a>
+                   </li>
+                   
+               }else { 
+               <li>
+                   <a href="?page=@i">@i</a>
+               </li>
+               }
+           }
+     @*<li class="active"><a href="#">1</a></li>
+     <li><a href="#">2</a></li>
+     <li><a href="#">3</a></li>
+     <li><a href="#">4</a></li>
+     <li><a href="#">5</a></li> *@
+     <li>
+         <a href="?page=@(ViewBag.CurPage + 1)" aria-label="Next">
+             <span aria-hidden="true">&raquo;</span>
+         </a>
+        </li>
+    </ul>
+    </nav>
+}
+
