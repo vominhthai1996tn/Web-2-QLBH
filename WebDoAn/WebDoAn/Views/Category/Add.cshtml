@@ -1,0 +1,31 @@
+﻿@model WebDoAn.Models.Product
+
+@section view_title {
+    <h4><b>Danh mục sản phẩm đấu giá</b></h4>
+}
+
+@section css{
+    <style type="text/css">
+       
+    </style>
+}
+
+<form method="post" action="">
+    Danh mục: 
+    <input type="text" name="CatName" />
+
+    <button class="btn btn-success" type="submit">
+         Thêm
+    </button>
+</form>
+<br />
+<a class="btn btn-danger btn-xs" href="@Url.Action("ListCategory", "Category")" role="button">
+    Quay về
+</a>
+
+@section js{
+    <script type="text/javascript">
+
+
+    </script>
+}

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="DoAn" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\vomin\\documents\\visual\ studio\ 2013\\Projects\\WebDoAn\\WebDoAn\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\vomin\\documents\\visual\ studio\ 2013\\Projects\\WebDoAn\\WebDoAn\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="DefaultConnection-Web.config Connection String" description="" value="Data Source=.\MSSQLEXPRESS;Initial Catalog=QLBH;Integrated Security=True" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\vomin\\documents\\visual\ studio\ 2013\\Projects\\WebDoAn\\WebDoAn\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+  <parameter name="QLBHEntities-Web.config Connection String" description="" value="metadata=res://*/Models.QLBH.csdl|res://*/Models.QLBH.ssdl|res://*/Models.QLBH.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=.\MSSQLEXPRESS;initial catalog=QLBH;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\vomin\\documents\\visual\ studio\ 2013\\Projects\\WebDoAn\\WebDoAn\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='QLBHEntities']/@connectionString" />
+  </parameter>
+</parameters>

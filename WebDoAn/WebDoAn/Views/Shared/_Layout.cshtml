@@ -1,0 +1,336 @@
+﻿@using WebDoAn.Helpers
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dấu giá</title>
+
+    <link href="~/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/assets/bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/assets/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.css" rel="stylesheet" />
+    @RenderSection("css", false)
+    <style>
+        .w3-sidebar a {
+            font-family: "Roboto", sans-serif;
+        }
+
+        .w3-wide {
+            font-family: "Montserrat", sans-serif;
+        }
+        .container-fluid {
+            background-color: #80ccff;
+        }
+
+        .text {
+            color: black;
+        }
+        .letrai {
+            margin-left: 15px;
+           
+        }
+        .lithongtin {
+            background-color: #80b3ff;
+        }               
+        
+        .container {
+            padding: 5px;
+        }
+        .btnsend {
+            padding: 10px 20px;
+            background-color: #333;
+            color: #f1f1f1;
+            border-radius: 0;
+            transition: .2s;
+        }
+
+        .btn:hover, .btn:focus, .btnsend:hover, .btnsend:focus {
+            
+            background-color: #fff;
+            color: #000;
+        }
+        .contactmargin{
+            margin-left: 100px;
+        }
+        .footercuoitrang {
+            background-color: #333;
+            color: white;
+            height: 40px;          
+        }
+        .righttext {
+            margin-right: 20px;
+        }
+        .blueicon {
+            color: #ff3333;
+        }
+        .bacgroundsend {
+            background-color: #ff3333;
+        }
+            .bacgroundsend:hover {
+                background-color: #0044cc;
+            }
+        .bacgroundblue {
+            background-color: #cce6ff;
+        }
+        .tieudecolor {
+            background-color: #001a33;
+        }
+        
+    </style >
+
+
+
+</head>
+<body>
+    @*<form id="frmSearchPro" method="post" action="@Url.Action("SearchPro", "Product") ">
+        <input type="hidden" id="txtSearchPro" name="SearchPro" />      
+    </form>*@
+
+    <nav class="navbar tieudecolor">
+        <div>
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                @*<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>*@
+                <a class="navbar-brand w3-wide" href="@Url.Action("Index", "Home")"><i class="glyphicon glyphicon-home"></i><b> Home</b></a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    @*<li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>*@                                       
+                    @*<li><a href="#"><b>Khuyến mãi</b></a></li>
+                    <li><a href="#"><b>Bảo hành</b></a></li>*@
+                    <li><a href="#contact"><b>Liên hệ</b></a></li>
+                </ul>
+
+                <!--tim kiem san pham-->
+                <form class="navbar-form navbar-left" id="frmSearchPro" method="post" action="@Url.Action("Search", "Product")">
+                    <div class="form-group">
+                        <input id="txtSearchPro" name="searchPro" type="text" class="form-control" placeholder="Search">
+                    </div>
+                    <button type="submit" class="btn btn-default searchpro" id="btnSearchPro"><b>Tìm kiếm</b></button>
+
+                    @*<div id="txtTimKiem">
+                        @using (Html.BeginForm("SearchPro", "Product", FormMethod.Post))
+                        {
+                            <div class="form-group">
+                                @Html.TextBox("txtTimKiem", "", htmlAttributes: new { @class = "TextBoxTimKiem", @placeholder = "Search" })
+                            </div>
+                            <div id="divHinhAnhTimKiem">
+                                <button type="submit" class="btn btn-default"><b>Tìm kiếm</b></button>
+
+                            </div>
+                        }
+                    </div>*@
+                </form>
+
+                <ul class="nav navbar-nav navbar-right">
+                    @if (CurrentContext.IsLogged() == false)
+                    {
+                        <li><a href="@Url.Action("Login", "Account")"><b>Đăng nhập</b></a></li>
+                        <li><a href="@Url.Action("Register", "Account")"><b>Đăng ký</b></a></li>
+                    }
+                    else
+                    {
+                        <li>
+                            <a href="@Url.Action("Index", "Cart")">
+                                <i class="fa fa-shopping-cart blueicon"></i>
+                                Giỏ hàng có @CurrentContext.GetCart().SumQ(CurrentContext.GetCurUser().f_ID) sản phẩm
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index", "Like")" title="Yêu thích">
+                                <i class="glyphicon glyphicon-heart blueicon"></i>
+                                @CurrentContext.GetToLike().SumLike(CurrentContext.GetCurUser().f_ID)
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Add", "MProduct")" title="Thêm sản phẩm">
+                                <i class="glyphicon glyphicon-plus blueicon"></i>
+                            </a>
+                        </li>   
+                        
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                @CurrentContext.GetCurUser().f_Username <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="lithongtin">
+                                    <a href="@Url.Action("Profile", "Account", new { id = CurrentContext.GetCurUser().f_ID})">
+                                        <i class="glyphicon glyphicon-user blueicon"></i>
+                                        Thông tin cá nhân
+                                    </a>
+                                </li>
+                                <li class="lithongtin">
+                                    <a href="@Url.Action("ListAuction", "ListProduct")">
+                                        <i class="glyphicon glyphicon-align-left blueicon"></i>
+                                        Đang đấu giá
+                                    </a>
+                                </li>
+                                <li class="lithongtin">
+                                    <a href="@Url.Action("ListDeline", "ListProduct")">
+                                        <i class="glyphicon glyphicon-indent-left blueicon"></i>
+                                        Đấu giá xong
+                                    </a>
+                                </li>
+                                <li class="lithongtin">
+                                    <a href="@Url.Action("ListWinProduct", "WinProduct")">
+                                        <i class="glyphicon glyphicon-align-justify blueicon"></i>
+                                        Sản phẩm thắng đấu giá
+                                    </a>
+                                </li>
+                                <li class="lithongtin">
+                                    <a id="logoutLink" href="javascript:;">
+                                        <i class="glyphicon glyphicon-log-out blueicon"></i>
+                                        Thoát
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>                                                                             
+                        
+                        if (CurrentContext.isAdmin(CurrentContext.GetCurUser().f_ID) == true)
+                        {
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <i class="glyphicon glyphicon-star-empty blueicon"></i>
+                                    Quản trị<span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li class="lithongtin">
+                                        <a href="javascript:;">
+                                            <i class="glyphicon glyphicon-check blueicon"></i>
+                                            Duyệt yêu cầu
+                                        </a>
+                                    </li>
+                                    <li class="lithongtin">
+                                        <a href="@Url.Action("UserList", "QuanTri")">
+                                            <i class="glyphicon glyphicon-user blueicon"></i>
+                                            Ngươi dùng
+                                        </a>
+                                    </li>
+                                    <li class="lithongtin">
+                                        <a href="@Url.Action("ListCategory", "Category")">
+                                            <i class="glyphicon glyphicon-list blueicon"></i>
+                                            Danh mục
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        }
+                    }
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+
+    <form id="frmLogout" method="post" action="@Url.Action("Logout", "Account")"></form>
+    <div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="panel-info">
+                    <div class="panel-heading">
+                        <h4><b>Danh mục đấu giá</b></h4>
+                    </div>
+
+                    <b>@Html.Action("List", "Category")</b>
+                    
+
+                </div>
+                <div class="panel panel-danger bacgroundblue">
+                    @*<div class="panel-heading">
+                <h3 class="panel-title">
+                    Hãng sản xuất
+                </h3>
+            </div>
+            <div class="panel-body">
+                Panel content
+            </div>*@
+                    <div class="letrai ">
+                        <h4><b>Đấu giá QL</b></h4>
+                        <p><i class="fa fa-fw fa-map-marker blueicon"></i> Company Name</p>
+                        <p><i class="fa fa-fw fa-phone blueicon"></i> 0969432975</p>
+                        <p><i class="fa fa-fw fa-envelope blueicon"></i> 1460130@hcmus.edu.vn</p>
+                        <h4><b>We accept</b></h4>
+                        <p><i class="fa fa-fw fa-cc-amex blueicon"></i> Amex</p>
+                        <p><i class="fa fa-fw fa-credit-card blueicon"></i> Credit Card</p>
+                        <i class="fa fa-facebook-official w3-hover-opacity w3-large blueicon"></i>
+                        <i class="fa fa-instagram w3-hover-opacity w3-large blueicon"></i>
+                        <i class="fa fa-snapchat w3-hover-opacity w3-large blueicon"></i>
+                        <i class="fa fa-pinterest-p w3-hover-opacity w3-large blueicon"></i>
+                        <i class="fa fa-twitter w3-hover-opacity w3-large blueicon"></i>
+                        <i class="fa fa-linkedin w3-hover-opacity w3-large blueicon"></i>
+                    </div>
+                </div>
+                <div class="panel panel-danger bacgroundblue">
+                    <div class="letrai">
+                        <div id="contact">
+                            <div>
+                                <h3 class=""><b>Liên hệ</b></h3>
+                                <p class="righttext">Cho chúng tôi biết ý kiến của bạn về nhưng gì chúng tôi mang lại!</p>
+                                <div class="row">
+                                    <div class="col-md-11">
+                                        <div class="row">
+                                            <div class="col-sm-12 form-group">
+                                                <input class="form-control" id="name" name="name" placeholder="Họ tên" type="text" required>
+                                            </div>
+                                            <div class="col-sm-12 form-group">
+                                                <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+                                            </div>
+                                        </div>
+                                        <textarea class="form-control" id="comments" name="comments" placeholder="Nội dung" rows="4"></textarea>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-md-12 form-group">
+                                                <button class="btnsend pull-right bacgroundsend" type="submit">Send</button>
+                                               
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+                    <div class="col-md-9">
+                        <div class="panel panel-info">
+                            <div class="panel-heading container-fluid ">
+                                @RenderSection("view_title")
+                            </div>
+                            <div class="panel-body">
+                                @RenderBody()
+                            </div>
+                        </div>
+                    </div>
+
+                   
+                </div>
+
+            <footer class="footercuoitrang">
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </footer>
+        </div>
+   
+        <script src="~/assets/jquery-3.2.1.min.js"></script>
+        <script src="~/assets/bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+            $('#logoutLink').on('click', function () {
+                $('#frmLogout').submit();
+            });
+
+            $('.searchpro').on('click', function () {
+                //var proName = $(this).data('SearchPro');
+                //$('#txtSearchPro').val(proName)
+                $('#frmSearchPro').submit();
+            });
+
+        </script>
+        @RenderSection("js", false)
+</body>
+</html>

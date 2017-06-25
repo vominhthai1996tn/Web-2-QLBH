@@ -1,0 +1,77 @@
+﻿@model IEnumerable<WebDoAn.Models.Product>
+@using WebDoAn.Models
+@using WebDoAn.Helpers
+
+@section view_title {
+    <h4><b>sản phẩm tìm kiếm</b></h4>
+}
+
+<h2>SearchPro</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TinyDes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FullDes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CatID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IDSell)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TinyDes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FullDes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CatID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IDSell)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

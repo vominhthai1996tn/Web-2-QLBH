@@ -1,0 +1,251 @@
+﻿@using WebDoAn.Models
+@using WebDoAn.Helpers
+
+@model List<Product>
+
+@section view_title {
+    <h4><b>Sản phẩm đấu giá</b></h4>
+}
+
+@section js{
+
+    <script type="text/javascript">
+        $('.addItem').on('click', function () {
+            var proId = $(this).data('id');
+            $('#txtP').val(proId)
+
+            //var proPrice = $(this).data('price');
+            //$('#txtPri').val(proPrice)
+
+            $('#frmAddToCart').submit();
+        });
+
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+
+        $('.likeItem').on('click', function () {
+            var proId = $(this).data('id');
+            $('#txtPl').val(proId)
+            $('#frmAddToLike').submit();
+        });
+
+    </script>
+}
+
+<style type="text/css">
+    .caption-lg-orange {
+        font-weight: bold;
+        font-size: 12pt;
+        color: #fc6e04;
+    }
+
+    .caption-lg-red {
+        font-weight: bold;
+        font-size: 11pt;
+        color: #ff0000;
+    }
+
+    .padding {
+        padding-top: 8px;
+    }
+
+    .datecolor {
+        color: blue;
+    }
+
+    .paddinglike, .paddinglike:visited {
+        color: #0066ff;
+        font-size: medium;
+        margin-left: 80px;
+    }
+
+    
+    .paddinglike:hover, .paddinglike:active {
+        color: red;
+    }
+
+    .huy {
+        color: white;
+        background-color: #ff1a1a;
+    }
+
+    .bacgroundcolor {
+        background-color: #cce6ff;
+    }
+    .thumbnail{
+        height: 400px;
+    }
+    .divnoidung {        
+        width: 280px;
+        height: 160px;       
+        overflow: hidden;
+    }
+    .divimg {
+        width: 290px;
+        height: 180px;       
+        overflow: hidden;
+        padding-left:30px;
+    }
+    .handaugia {
+        margin-left: 50px;
+        color: red;
+    }
+    .handaugia:visited {
+        color: red;           
+            
+    }
+</style>
+
+@*<script>
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>*@
+
+@if (Model.Count == 0)
+{
+    <text>Không có sản phẩm</text>
+}
+else
+{
+    <form id="frmAddToCart" method="post" action="@Url.Action("Add2", "Cart") ">
+        <input type="hidden" id="txtP" name="proId" />
+        <input type="hidden" id="txtQ" name="quantity" value="1" />
+        <input type="hidden" id="txtCP" name="curPage" value="@ViewBag.CurPage" />
+        @*<input type="hidden" id="txtPri" name="proPrice"/>*@
+    </form>
+    <form id="frmAddToLike" method="post" action="@Url.Action("Like", "Like") ">
+        <input type="hidden" id="txtPl" name="proId" />
+        <input type="hidden" id="txtQl" name="quantity" value="1" />
+        <input type="hidden" id="txtCPl" name="curPage" value="@ViewBag.CurPage">
+    </form>
+
+    <div class="row bacgroundcolor">
+        @foreach (var p in Model)
+        {
+            <div class="col-md-4">
+                <div class="thumbnail">
+                    <div class="divimg">
+                        <img src="~/Imgs/sp/@p.ProID/main_thumbs.jpg" title="@p.ProName" data-toggle="tooltip" />
+                    </div>
+                    <div class="caption">
+                        <div class="divnoidung">
+                            <h4 class="caption-lg-orange">@p.ProName</h4>
+                            <h4 class="caption-lg-red">Giá khởi điểm: @String.Format("{0:N0}", p.Price) VND</h4>
+                            <h4 class="datecolor">Thời gian đấu giá đến: @p.DateTime</h4>
+                            <p>@p.TinyDes</p>
+                        </div>
+                        
+                            <a href="@Url.Action("Detail", "Product", new { id = @p.ProID })" class="btn btn-primary" role="button">
+                                Chi tiết
+                            </a>
+                            @if (CurrentContext.IsLogged() && p.DateTime >= DateTime.Now)
+                            {
+                                @*<a href="javascript:;" class="btn btn-success addItem" role="button" data-id="@p.ProID" data-toggle="tooltip" title="Giá +50,000">
+                                        <i class="fa fa-cart-plus"></i>
+                                        Đấu giá
+                                    </a>*@
+                                @*<input id="txtPri" type="number" name="proPrice" placeholder="Giá đấu" value="@(p.Price + 50000)">*@
+
+
+                                <a href="javascript:;" class="btn btn-success addItem" role="button" data-id="@p.ProID" data-toggle="modal" data-target="#myModal" title="Giá +100,000">
+                                    <i class="fa fa-cart-plus"></i>
+                                    Đấu giá
+                                </a>
+
+                                @*<a href="javascript:;" class="btn btn-success" role="button" data-id="@p.ProID" data-toggle="modal" data-target="#myModal" title="Giá +100,000">
+                                        <i class="fa fa-cart-plus"></i>
+                                        Đấu giá
+                                    </a>
+
+                                    <div class="modal fade" id="myModal" role="dialog">
+                                        <div class="modal-dialog modal-sm">
+                                            <div class="modal-content">
+                                                <div class="modal-body">
+                                                    Xác nhận đấu giá <b>@p.ProName</b><br />
+                                                    Với giá đấu: @String.Format("{0:N0}", p.Price + 100000) VND
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-primary addItem" data-id="@p.ProID">Ok</button>
+                                                    <button type="button" class="btn btn-default huy" data-dismiss="modal">Huỷ</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>*@
+
+
+                                <a href="javascript:;" class="likeItem" data-id="@p.ProID" title="Like"><i class="glyphicon glyphicon-heart paddinglike"></i></a>
+
+                                @*if (CurrentContext.GetCart().IsPrice(@p.ProID, Convert.ToInt32(p.Price) + 50000) == false)
+                                    {
+                                        <div class="modal fade" id="myModal" role="dialog">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                        <h4 class="modal-title">Giá đấu không hợp lệ</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <h5>Đã có ngươi ra giá cao hơn giá của bạn</h5>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }*@
+                            }
+                            else
+                            {
+                                <a href="#" class="handaugia" data-toggle="modal" data-target="#myModal">
+                                    <b>Hết thời gian đấu giá</b>
+                                </a>
+
+                            }
+
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+                <li>
+                    <a href="?page=@(ViewBag.CurPage - 1)" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+
+                @for (int i = 1; i <= ViewBag.Pages; i++)
+                {
+                    if (ViewBag.CurPage == i)
+                    {
+                        <li class="active">
+                            <a href="?page=@i">@i</a>
+                        </li>
+
+                    }
+                    else
+                    {
+                        <li>
+                            <a href="?page=@i">@i</a>
+                        </li>
+                    }
+                }
+                @*<li class="active"><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li> *@
+                <li>
+                    <a href="?page=@(ViewBag.CurPage + 1)" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+}
+

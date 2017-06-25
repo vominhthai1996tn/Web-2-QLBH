@@ -1,0 +1,30 @@
+﻿@{
+    Layout = null;
+}
+
+@model List<WebDoAn.Models.Category>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Danh sách sanh mục</title>
+</head>
+<body>
+    <div>
+       @Model.Count
+    </div>
+    <table border="1">
+        <tr>
+            <td>ID</td>
+            <td>Category</td>
+        </tr>
+        @foreach (var c in Model) {
+        <tr>
+            <td>@c.CatID</td>
+            <td>@c.CatName</td>
+        </tr>
+        }
+    </table>
+</body>
+</html>

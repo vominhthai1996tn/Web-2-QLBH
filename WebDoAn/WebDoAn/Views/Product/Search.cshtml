@@ -1,0 +1,119 @@
+﻿@using WebDoAn.Models
+@using WebDoAn.Helpers
+
+@model List<Product>
+
+@section view_title {
+    <h4><b>Sản phẩm tìm kiếm</b></h4>
+}
+
+@section css{
+    <style type="text/css">
+        .paddinglike, .paddinglike:visited {
+            color: #0066ff;
+            font-size: medium;
+            margin-left: 0px;
+        }
+
+        .paddinglike:hover, .paddinglike:active {
+           color: red;
+        }
+
+        .caption-lg-orange {
+            font-weight: bold;
+            font-size: 12pt;
+            color: #fc6e04;
+        }
+
+        .datecolor {
+            color: blue;
+        }
+
+        .caption-lg-red {
+            font-weight: bold;
+            font-size: 11pt;
+            color: #ff0000;
+        }
+
+        .top {
+            height: 850px;
+            overflow: hidden;
+            background-color: #ff8080;
+        }
+
+        .divimg {
+            width: 270px;
+            height: 160px;
+            overflow: hidden;
+           
+        }
+
+        .divnoidung {
+            width: 180px;
+            height: 150px;
+            overflow: hidden;
+            
+        }
+
+        .thumbnailtop {
+            height: 380px;
+            overflow: hidden;
+        }
+    </style>
+}
+
+@if (Model == null)
+{
+    <p>Không có sản phẩm</p>
+}
+else
+{
+    <div class="panel-heading top">
+        @{
+    int dem = 0;
+        }
+        @foreach (var c in Model)
+        {
+            if (dem == 6)
+            {
+                break;
+            }
+
+            <div class="col-md-3">
+                <div class="thumbnail">
+                    <div class="divimg">
+                        <img src="~/Imgs/sp/@c.ProID/main_thumbs.jpg" title="@c.ProName" data-toggle="tooltip" />
+                    </div>
+                    <div class="caption">
+                        <div class="divnoidung">
+                            <h4 class="caption-lg-orange">@c.ProName</h4>
+                            <h4 class="caption-lg-red">Khởi điểm: @String.Format("{0:N0}", c.Price) VND</h4>
+                            <h4 class="datecolor">Thời gian đến: @c.DateTime</h4>
+                        </div>
+                        <p>
+                            <a href="@Url.Action("Detail", "Product", new { id = @c.ProID })" class="btn btn-primary" role="button">
+                                Chi tiết
+                            </a>
+                            @*@if (CurrentContext.IsLogged())
+                            {
+                                <a href="javascript:;" class="btn btn-success addItem" role="button" data-id="@c.ProID" data-toggle="modal" data-target="#myModal" title="Giá +100,000">
+                                    <i class="fa fa-cart-plus"></i>
+                                    Đấu giá
+                                </a>
+
+                                <a href="javascript:;" class="likeItem" data-id="@c.ProID" title="Like"><i class="glyphicon glyphicon-heart paddinglike"></i></a>
+                            }*@
+                    </div>
+                </div>
+            </div>
+
+                            dem = dem + 1;
+        }
+    </div>
+}
+
+@section js{
+    <script type="text/javascript">
+
+    </script>
+}

@@ -1,0 +1,72 @@
+﻿@using WebDoAn.Models
+@using WebDoAn.Helpers
+
+@model List<OrderDetail>
+
+@section view_title {
+    <h4><b>Sản phẩm thắng đấu giá</b></h4>
+}
+
+@section css{
+    <link href="~/assets/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.css" rel="stylesheet" />
+    <style type="text/css">
+        .tieude {
+            background-color: #00cc44;
+        }
+
+        .table-hover {
+            background-color: #b3c6ff;
+        }
+    </style>
+}
+
+@if (Model == null)
+{
+    <text>Không có sản phẩm nào</text>
+}
+else
+{
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-hover">
+                <thead>
+                    <tr class="tieude">
+                        <th class="col-sm-4">Sản phẩm</th>
+                        <th class="col-sm-3">Giá khởi điểm (VND)</th>
+                        <th class="col-sm-3">Giá đấu</th>                      
+                    </tr>
+                </thead>
+
+                <tbody>
+                   @foreach (var cim in Model)
+                   {
+                       if (CurrentContext.GetWinPro().checkIDOrder(cim.OrderID, CurrentContext.GetCurUser().f_ID) == true)
+                       { 
+                       <tr>
+                           <td>
+                                <a href="@Url.Action("Detail", "Product", new { id = cim.ProID })">
+                                    <b>@CurrentContext.GetWinPro().OutNameProduct(cim.ProID)</b>
+                                </a>
+                           </td>
+
+                           <td>@string.Format("{0:N0}", cim.Price)</td>
+                           <td>@string.Format("{0:N0}", cim.Amount)</td>
+                           
+                       </tr> 
+                       }                                                
+                    }                                                                                                          
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+}
+
+
+@section js{
+    <script src="~/assets/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js"></script>
+    <script type="text/javascript">
+
+
+    </script>
+}
