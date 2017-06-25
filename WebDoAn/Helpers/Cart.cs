@@ -63,7 +63,7 @@ namespace WebDoAn.Helpers
         //    }
         //}
 
-        //kiem tra gia dau co hop le khong
+        //kiểm tra giá đấu có hợp lệ không, phải cao hơn người ra giá trước đó (dùng trong Add, Add2 trong controller)
         public bool IsPrice(int proId, int proPirce)
         {
             var eItem = this.Items
@@ -78,7 +78,7 @@ namespace WebDoAn.Helpers
             return true;
         }
 
-        // kiem tra gia de thong bao cho nguoi dung biet co nguoi ra gia cao hon
+        //kiểm tra giá, thông báo nếu có ngươi ra giá cao hơn (index)
         public bool IsPriceUser(int idUser, int proId, int proPirce)
         {
             var eItem = this.Items
@@ -95,14 +95,17 @@ namespace WebDoAn.Helpers
             return true;
         }
 
-        //kiem tra nguoi dùng idUser, dau giá sản phẩm idPro có đưa ra giá đấu cao nhất hay không
+        //kiem tra nguoi dùng idUser, dau giá sản phẩm idPro có đưa ra giá đấu cao nhất hay không (index)
         public bool PriceMax(int idUser, int idPro)
-        {            
+        {
+            //tìm thông tin người đang cần kiểm tra
             var uwin = this.Items
                 .Where(i => i.idUser == idUser && i.Product.ProID == idPro)
                 .FirstOrDefault();
+            if (uwin == null)//không có ng này kq sẽ null
+                return false;
 
-            //nếu chỉ có duy nhất 1 người đấu gia thì người dùng này thắng
+            //nếu chỉ có duy nhất 1 người đấu gia sản phẩm này thì người dùng này thắng
             var temp = this.Items.Where(i => i.Product.ProID == idPro && i.idUser != idUser).FirstOrDefault();
             if (temp == null)
                 return true;
@@ -110,7 +113,7 @@ namespace WebDoAn.Helpers
             //nhiều người cùng đấu giá
             foreach (var user in this.Items.Where(i => i.Product.ProID == idPro && i.idUser != idUser))
             {
-                if (uwin.moneyUser <= user.moneyUser)
+                if (uwin.moneyUser <= user.moneyUser)//nếu giá thấp hơn người chơi khác thì false
                 {
                     return false;
                 }
