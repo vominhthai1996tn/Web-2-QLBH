@@ -163,33 +163,33 @@ namespace WebDoAn.Controllers
                 //tiem den san pham co ID = idPro, va user da dau gia no co id = id user hien tai da dang nhap
                 var u = c.Items
                     .Where(i => i.idUser == CurrentContext.GetCurUser().f_ID && i.Product.ProID == idPro)
-                    .FirstOrDefault();
-                
-                //nếu sản phẩm hết thời gian đấu giá
-                if (u.Product.DateTime >= DateTime.Now)
-                {
-                    int idU = CurrentContext.GetCurUser().f_ID;
-                    if (CurrentContext.GetCart().PriceMax(idU, idPro) == true)
+                    .FirstOrDefault();                               
+               
+                int idU = CurrentContext.GetCurUser().f_ID;
+                //if (CurrentContext.GetCart().PriceMax(idU, idPro) == true)
+                //{
+                    var ord = new Order
                     {
-                        var ord = new Order
-                        {
-                            OrderDate = DateTime.Now,
-                            UserID = CurrentContext.GetCurUser().f_ID,
-                            Total = u.Price//tổng giá đấu
-                        };
+                        OrderDate = DateTime.Now,
+                        UserID = CurrentContext.GetCurUser().f_ID,
+                        Total = u.Price//tổng giá đấu
+                    };
 
-                        var detail = new OrderDetail
-                        {
-                            ProID = u.Product.ProID,                          
-                            Price = u.Product.Price,
-                            Amount = u.Price//giá đấu
-                        };
+                    var detail = new OrderDetail
+                    {
+                        ProID = u.Product.ProID,
+                        Price = u.Product.Price,
+                        Amount = u.Price//giá đấu
+                    };
 
-                        ord.OrderDetails.Add(detail);
-                        //ord.Total += detail.Amount;
+                    ord.OrderDetails.Add(detail);
+                    //ord.Total += detail.Amount;
 
-                        ctx.Orders.Add(ord);
-                        ctx.SaveChanges();
+                    ctx.Orders.Add(ord);
+                    ctx.SaveChanges();
+                //}
+
+                    //Remove(u.Product.ProID);//xoá sản phẩm đã thắng khỏi danh sách
                     }
                 }
             }
