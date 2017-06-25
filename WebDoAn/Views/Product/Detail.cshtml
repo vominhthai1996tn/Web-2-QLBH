@@ -12,7 +12,7 @@
     <link href="~/assets/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.css" rel="stylesheet" />
 
     <style type="text/css">
-        .caption-lg-orange {
+       .caption-lg-orange {
             font-weight: bold;
             font-size: 12pt;
             color: #fc6e04;
@@ -34,6 +34,47 @@
         .huy {
             color: white;
             background-color: #ff1a1a;
+        }
+
+        .gallery {
+            border: 1px solid #ccc;           
+            margin: 10px;
+            float: left;
+            width: 450px;
+        }
+        .gallery:hover {
+            border: 1px solid #777;
+            box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+            }
+        .gallery2 {
+            border: 1px solid #ccc;
+            margin: 10px;
+            margin-left: 200px;
+            width: 450px;
+        }
+        .gallery2:hover {
+            border: 1px solid #777;
+            box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+        }
+
+        .hinhthunho {           
+            margin: 0px;
+            background-color: none;
+            height: 360px;
+        }
+        .marginhinh {
+            border: 2px solid black;
+            margin: 5px;
+        }
+        .marginhinh:hover {
+            border: 3px solid red;
+            box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+        }
+        .hinh {
+            margin: 0px;
+            background-color: none;
+            height: 360px;
+            padding: 0px;
         }
     </style>
 
@@ -70,9 +111,16 @@ else
 {
 
     <div class="row">
-        <div class="col-md-12">
-            <img src="~/Imgs/sp/@Model.ProID/main.jpg" />
+        
+        <div class="col-md-2 hinhthunho">
+            <a href="#" class="hinhmain"><img class="marginhinh" src="~/Imgs/sp/@Model.ProID/main.jpg" style="width:130px;height:110px;" /></a>
+            <a href ="#" class="hinh1"><img class="marginhinh" src="~/Imgs/sp/@Model.ProID/1.jpg" style="width: 130px; height: 110px;" /></a>
+            <a href="#" class="hinh2"><img class="marginhinh" src="~/Imgs/sp/@Model.ProID/2.jpg" style="width: 130px; height: 110px;" /></a>
         </div>
+        <div class="col-md-9 hinh">
+            <div id="hinhnhanmain"><img class="marginhinh" src="~/Imgs/sp/@Model.ProID/1.jpg" style="width: 450px; height: 350px;" /></div>
+        </div>
+                
         <div class="col-md-12 caption-lg-orange">
             <h3>@Model.ProName</h3>
         </div>
