@@ -15,16 +15,34 @@ namespace WebDoAn.Helpers
             this.ItemsOrderDetail = new List<OrderDetail>();        
         }
 
-         public void ListOrder(int userid, int[] a)
+         public bool checkIDOrder(int idorder, int iduser)
          {
-            
              using (var ctx = new QLBHEntities())
              {
-                 var lOrder = ctx.Orders.Where(i => i.UserID == userid).ToList();
-                     
+                 var list = ctx.Orders
+                     .Where(od => od.OrderID == idorder && od.UserID == iduser)                   
+                     .FirstOrDefault();
 
-                
-             }     
+                 if (list == null)
+                     return false;
+             }
+
+             return true;
+         }
+
+         public string OutNameProduct(int idpro)
+         {
+             using (var ctx = new QLBHEntities())
+             {
+                 var pro = ctx.Products
+                     .Where(p => p.ProID == idpro)
+                     .FirstOrDefault();
+
+                 if (pro != null)
+                     return pro.ProName;
+                 else
+                     return null;
+             }
          }
     }
 }
