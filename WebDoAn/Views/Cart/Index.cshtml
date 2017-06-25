@@ -85,7 +85,7 @@ else
                         <th class="col-sm-2">Giá khởi điểm (VND)</th>
                         <th class="col-sm-3">Thời gian đến</th>
                         <th class="col-sm-2">Giá đấu (VND)</th>   
-                                              
+                        <th class="col-sm-3">Thông báo</th>
                         @*<th class="col-sm-2">Số lượng</th>*@
                         <th class="col-sm-2">&nbsp;</th>
                     </tr>
@@ -129,29 +129,35 @@ else
                                 @*<td>@string.Format("{0:N0}", cim.Product.Price * cim.Quantity)</td>*@
                                 @*<td>@string.Format("{0:N0}", cim.Price * cim.Quantity)</td>*@
 
-                                <td class="text-right">
+                                <td>
+                                    @*sản phẩm hết thời gian đấu giá, tiến hành kiểm tra giá đấu, nếu thắng sẽ thêm vào csdl*@
+                                    @if (@cim.Product.DateTime < DateTime.Now)
+                                    {
+                                        //kiểm tra giá có cao nhất không
+                                        if (CurrentContext.GetCart().PriceMax(cim.idUser, cim.Product.ProID) == true)
+                                        {
+                                            <form method="post" id="frmWin" action="@Url.Action("Win", "Cart" ,new { id = cim.Product.ProID })">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <button type="submit" class="btn btn-success" data-toggle="tooltip" title="Bạn đã thắng đấu giá sản phẩm này">
+                                                            <i class="fa fa-check"></i> Xác nhận
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        }
+                                    }
+
                                     @*Báo cho người dùng biết cho ngươi ra giá cao hơn*@
                                     @if (CurrentContext.GetCart().IsPriceUser(cim.idUser, cim.Product.ProID, Convert.ToInt32(cim.Price)) == false)
                                     {
                                         <a href="javascript:;" role="button" data-toggle="tooltip" title="Đã có người ra giá cao hơn bạn" data-proid="@cim.Product.ProID">
-                                            <i class="glyphicon glyphicon-exclamation-sign"></i>
+                                            <i class="glyphicon glyphicon-exclamation-sign" style="color: #cccc00; "></i>
                                         </a>
                                     }
-                                    
-                                    @*nếu sản phẩm được đấu giá thành công sẽ hiện lên nút thanh toán cho từng sản phẩm, hoặc là huỷ bỏ *@
-                                    @*@if (CurrentContext.GetCart().PriceMax(cim.idUser, cim.Product.ProID) == true)
-                                    {
-                                        <form method="post" id="frmWin" action="@Url.Action("Win", "Cart" ,new { id = cim.Product.ProID })">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <button type="submit" class="btn btn-danger">
-                                                        <i class="fa fa-check"></i> Thanh toán
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    }*@
+                                </td>
 
+                                <td class="text-right">                                                                      
                                     <a class="btn btn-danger btn-xs removeItem" href="javascript:;" role="button" data-toggle="tooltip" title="Xóa" data-proid="@cim.Product.ProID">
                                         <i class="fa fa-remove"></i>
                                     </a>
