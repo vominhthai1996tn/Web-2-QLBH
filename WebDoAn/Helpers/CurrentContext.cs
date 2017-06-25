@@ -93,6 +93,18 @@ namespace WebDoAn.Helpers
             return ret;
         }
 
+         public static WinPro GetWinPro()
+        {
+            var ret = (WinPro)HttpContext.Current.Session["winpro"];
+            if (ret == null)
+            {
+                ret = new WinPro();
+                HttpContext.Current.Session["winpro"] = ret;
+            }
+
+            return ret;
+        }
+        
         public static Cat GetCategory()
         {
             var ret = (Cat)HttpContext.Current.Session["cat"];
