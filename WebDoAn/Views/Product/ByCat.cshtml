@@ -132,7 +132,15 @@ else
                     <div class="caption">
                         <div class="divnoidung">
                             <h4 class="caption-lg-orange">@p.ProName</h4>
-                            <h4 class="caption-lg-red">Giá khởi điểm: @String.Format("{0:N0}", p.Price) VND</h4>
+                            <h4 class="caption-lg-red datecolor">Giá khởi điểm: @String.Format("{0:N0}", p.Price) VND</h4>
+                            
+                            @if (CurrentContext.GetCart().pricemin(p.ProID) != 0){ 
+                                <h4 class="caption-lg-red">Giá thấp nhất hiên tại: @String.Format("{0:N0}", CurrentContext.GetCart().pricemin(p.ProID) +100000) VND</h4>   
+                            }
+                            else { 
+                                <h4 class="caption-lg-red">Giá thấp nhất hiên tại: @String.Format("{0:N0}", p.Price) VND</h4>
+                            }
+        
                             <h4 class="datecolor">Thời gian đấu giá đến: @p.DateTime</h4>
                             <p>@p.TinyDes</p>
                         </div>
@@ -142,7 +150,7 @@ else
                             </a>
                             @if (CurrentContext.IsLogged())
                             {
-                                @*<a href="javascript:;" class="btn btn-success addItem" role="button" data-id="@p.ProID" data-toggle="tooltip" title="Giá +50,000">
+                                @*<a href="javascript:;" class="btn btn-success addItem" role="button" data-id="@p.ProID" data-toggle="tooltip" title="Giá hiện tại">
                                         <i class="fa fa-cart-plus"></i>
                                         Đấu giá
                                     </a>*@
