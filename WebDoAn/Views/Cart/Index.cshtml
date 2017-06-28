@@ -98,14 +98,10 @@ else
                     @foreach (var cim in Model)
                     {
                         if (cim.idUser == CurrentContext.GetCurUser().f_ID)
-                        {
-
-                            //total += cim.Product.Price * cim.Quantity;
+                        {                           
                             total += cim.Price * cim.Quantity;
 
-                            <tr>
-                                @*<td>@cim.Product.ProName</td>*@
-
+                            <tr>                             
                                 <td>
                                     <a href="@Url.Action("Detail", "Product", new { id = cim.Product.ProID })">
                                         <b>@cim.Product.ProName</b>
@@ -113,21 +109,8 @@ else
                                 </td>
 
                                 <td>@string.Format("{0:N0}", cim.Product.Price)</td>
-
                                 <td>@cim.Product.DateTime</td>
-
-                                @*<td>@string.Format("{0:N0}", cim.Product.Price)</td>*@
-                                <td class="proPricolor">@string.Format("{0:N0}", cim.Price)</td>
-
-
-
-                                @*<td>@cim.Quantity</td>*@
-                                @*<td>
-                            <input type="text" value="@cim.Quantity" class="numeric"/>
-                        </td>*@
-
-                                @*<td>@string.Format("{0:N0}", cim.Product.Price * cim.Quantity)</td>*@
-                                @*<td>@string.Format("{0:N0}", cim.Price * cim.Quantity)</td>*@
+                                <td class="proPricolor">@string.Format("{0:N0}", cim.Price)</td>                                                                                 
 
                                 <td>
                                     @*sản phẩm hết thời gian đấu giá, tiến hành kiểm tra giá đấu, nếu thắng sẽ thêm vào csdl*@
@@ -136,15 +119,9 @@ else
                                         //kiểm tra giá có cao nhất không
                                         if (CurrentContext.GetCart().PriceMax(cim.idUser, cim.Product.ProID) == true)
                                         {
-                                            <form method="post" id="frmWin" action="@Url.Action("Win", "Cart" ,new { id = cim.Product.ProID })">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <button type="submit" class="btn btn-success" data-toggle="tooltip" title="Bạn đã thắng đấu giá sản phẩm này">
-                                                            <i class="fa fa-check"></i> Xác nhận
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </form>
+                                             <a href="@Url.Action("Win", "Cart", new { id = cim.Product.ProID })" class="btn btn-success" role="button" data-toggle="tooltip" title="Bạn đã thắng đấu giá sản phẩm này">
+                                                <i class="fa fa-check"></i>Xác nhận
+                                            </a>
                                         }
                                     }
 
