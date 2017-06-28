@@ -40,6 +40,8 @@ namespace WebDoAn.Controllers
                     Product = pro
                 };
 
+		decimal temp = CurrentContext.GetCart().pricemin(proId);
+
                 CurrentContext.moneyUser(item, CurrentContext.GetCurUser().f_ID);
 
                 if (CurrentContext.GetCart().IsPrice(proId, proPrice) == false || item.moneyUser < proPrice)
@@ -48,7 +50,16 @@ namespace WebDoAn.Controllers
                    
                 }
                 else {
-                    CurrentContext.GetCart().AddItem(item);
+                    if (temp != 0 && item.Price >= temp + 100000)
+                    {
+                        CurrentContext.GetCart().AddItem(item);
+                    }
+                    else {
+                        if (temp == 0)
+                        {
+                            CurrentContext.GetCart().AddItem(item);
+                        }
+                    }     
                 }
                 
                 return RedirectToAction("Detail", "Product", new { id = proId });
@@ -77,6 +88,10 @@ namespace WebDoAn.Controllers
                     Product = pro
                 };
 
+		decimal temp = CurrentContext.GetCart().pricemin(proId);
+                if (temp != 0)
+                    item.Price = temp + 100000;
+		
                 CurrentContext.moneyUser(item, CurrentContext.GetCurUser().f_ID);
 
                 if (CurrentContext.GetCart().IsPrice(proId, Convert.ToInt32(pro.Price + 50000)) == false || item.moneyUser < pro.Price + 50000)
