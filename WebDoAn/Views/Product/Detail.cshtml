@@ -90,7 +90,7 @@
         //    verticalbuttons: false
         //});
         $('#txtPri').TouchSpin({
-            min: @Model.Price + 100000,           
+            min: @Model.Price + 0,           
             max: 1000000000000,
             stepinterval: 50,
             maxboostedstep: 10000000,           
@@ -125,7 +125,17 @@ else
             <h3>@Model.ProName</h3>
         </div>
         <div class="col-md-12 padding ">
-            <span class="caption-lg-red">Giá khởi điểm: @string.Format("{0:N0}", Model.Price) VND</span>
+            <span class="caption-lg-red datecolor">Giá khởi điểm: @string.Format("{0:N0}", Model.Price) VND</span>
+        </div>
+                <div class="col-md-12 padding ">
+            @if (CurrentContext.GetCart().pricemin(Model.ProID) != 0)
+            {
+                <h4 class="caption-lg-red">Giá thấp nhất hiên tại: @String.Format("{0:N0}", CurrentContext.GetCart().pricemin(Model.ProID) + 100000) VND</h4>
+            }
+            else
+            {
+                <h4 class="caption-lg-red">Giá thấp nhất hiên tại bạn có thể ra giá đấu: @String.Format("{0:N0}", Model.Price) VND</h4>
+            }
         </div>
         <div class="col-md-12 padding datecolor">
             Thời gian đấu giá đến: @Model.DateTime
