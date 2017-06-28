@@ -122,6 +122,22 @@ namespace WebDoAn.Helpers
             return true;
         }
 
+         public decimal pricemin(int idPro)
+        {
+            decimal kq = 0;
+            var uwin = this.Items.OrderByDescending(i => i.Price)
+               .Where(i => i.Product.ProID == idPro)
+               .FirstOrDefault();
+
+            if (uwin != null)
+            {
+                kq = uwin.Price;
+                return kq;
+            }
+
+            return kq;
+        }
+        
     }
     public class CartItem
     {
