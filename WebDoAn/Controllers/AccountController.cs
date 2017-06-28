@@ -84,28 +84,34 @@ namespace WebDoAn.Controllers
             }
             else
             {
-             
-                // TODO: Captcha validation passed, proceed with protected action
-
-                User u = new User
+             if (CurrentContext.GetCheckEmail().checkEmailHopLe(model.Email) == false)
                 {
-                    f_Username = model.Username,
-                    f_Email = model.Email,
-                    f_Name = model.Name,
-                    f_Password = StringUtils.Md5(model.RawPWD),
-                    f_Permission = 0,
-                    f_DOB = DateTime.ParseExact(model.DOB, "d/m/yyyy", null),
-                    //f_Money = Decimal.Parse(model.Money, NumberStyles.Currency)
-                    f_Money = Convert.ToDecimal(model.Money.ToString().TrimStart('¥'))
-
-                };
-
-                using (QLBHEntities ctx = new QLBHEntities())
-                {
-                    ctx.Users.Add(u);
-                    ctx.SaveChanges();
+                    ViewBag.ErrorMsg = "Email đã tồn tại, mời nhập email khác!";
                 }
-                
+                else {
+                    // TODO: Captcha validation passed, proceed with protected action
+
+                    User u = new User
+                    {
+                        f_Username = model.Username,
+                        f_Email = model.Email,
+                        f_Name = model.Name,
+                        f_Password = StringUtils.Md5(model.RawPWD),
+                        f_Permission = 0,
+                        f_DOB = DateTime.ParseExact(model.DOB, "d/m/yyyy", null),
+                        f_Phone = model.Phone,
+                        f_Address = model.Address,
+                        //f_Money = Decimal.Parse(model.Money, NumberStyles.Currency)
+                        f_Money = Convert.ToDecimal(model.Money.ToString().TrimStart('¥'))
+
+                    };
+
+                    using (QLBHEntities ctx = new QLBHEntities())
+                    {
+                        ctx.Users.Add(u);
+                        ctx.SaveChanges();
+                    }                  
+                }     
             }
             return View();
         }
