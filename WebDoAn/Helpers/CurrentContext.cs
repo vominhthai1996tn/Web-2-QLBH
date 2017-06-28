@@ -128,6 +128,19 @@ namespace WebDoAn.Helpers
 
             return ret;
         }
+        
+        
+        public static CheckEmail GetCheckEmail()
+        {
+            var ret = (CheckEmail)HttpContext.Current.Session["checkmail"];
+            if (ret == null)
+            {
+                ret = new CheckEmail();
+                HttpContext.Current.Session["checkmail"] = ret;
+            }
+
+            return ret;
+        }
 
         public static void Destroy()
         {
