@@ -58,8 +58,10 @@ namespace WebDoAn.Controllers
                     string mainFileName = Path.Combine(targetDirPath, "main.jpg");
                     fuMain.SaveAs(mainFileName);
 
-                    string thumbsFileName = Path.Combine(targetDirPath, "main_thumbs.jpg");
+                    string thumbsFileName = Path.Combine(targetDirPath, "1.jpg");
                     fuThumbs.SaveAs(thumbsFileName);
+                    string thumbsFileName1 = Path.Combine(targetDirPath, "2.jpg");
+                    fuThumbs1.SaveAs(thumbsFileName1);
                 }
 
 
