@@ -59,6 +59,13 @@
                 fuMain: {
                     required: true
                 },
+                
+                fuThumbs: {
+                    required: true
+                },
+                fuThumbs1: {
+                    required: true
+                },
             },
             messages: {
                 ProName: {
@@ -72,6 +79,12 @@
                 },
                 fuMain: {
                     required: 'Vui lòng chọn hình nhả.'
+                },
+                fuThumbs: {
+                    required: 'Vui lòng chọn hình ảnh.'
+                },
+                fuThumbs1: {
+                    required: 'Vui lòng chọn hình ảnh.'
                 },
             }
         });
@@ -115,8 +128,11 @@
                 <input type="file" id="fuMain" name="fuMain" />
             </div>
             <label class="col-sm-2 control-label">Hình nhỏ:</label>
-            <div class="col-sm-4">
-                <input type="file" id="fuThumbs" name="fuThumbs" />
+            <div class="col-sm-5">
+                    <input type="file" id="fuThumbs" name="fuThumbs" />
+                </div>
+            <div class="col-sm-5">
+                    <input type="file" id="fuThumbs1" name="fuThumbs1" />
             </div>
         </div>
 
